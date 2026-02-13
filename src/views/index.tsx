@@ -1,9 +1,10 @@
+import { useEffect } from "react";
 import { Box, Flex, GridItem, Presence, SimpleGrid, useDisclosure } from "@chakra-ui/react";
 // Component
 import HeaderSection from "./HeaderSection";
 import AboutUsSection from "./AboutMeSection";
+import EducationSection from "./EducationSection";
 import WorkExperienceSection from "./WorkExperienceSection";
-import { useEffect } from "react";
 
 const Home = () => {
   const { open, onOpen } = useDisclosure();
@@ -14,6 +15,7 @@ const Home = () => {
 
   return (
     <>
+      {/* Profile */}
       <Presence
         lazyMount
         unmountOnExit
@@ -28,6 +30,7 @@ const Home = () => {
       <SimpleGrid columns={12} gap="1rem">
         <GridItem colSpan={{ base: 12, lg: 5 }}>
           <Flex direction="column" gap="1rem">
+            {/* About Me */}
             <Presence
               lazyMount
               unmountOnExit
@@ -37,10 +40,21 @@ const Home = () => {
             >
               <AboutUsSection />
             </Presence>
+            {/* Education */}
+            <Presence
+              lazyMount
+              unmountOnExit
+              present={open}
+              animationStyle={{ _open: "scale-fade-in", _closed: "scale-fade-out" }}
+              animationDuration="1000ms"
+            >
+              <EducationSection />
+            </Presence>
           </Flex>
         </GridItem>
         <GridItem colSpan={{ base: 12, lg: 7 }}>
           <Flex direction="column" gap="1rem">
+            {/* Work Experience */}
             <Presence
               lazyMount
               unmountOnExit

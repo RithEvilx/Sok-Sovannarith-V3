@@ -1,14 +1,11 @@
 import { useTranslation } from "react-i18next";
-import { Box, Flex, List, Text } from "@chakra-ui/react";
 import { useColorMode } from "@/components/ui/color-mode";
+import { Box, Flex, Text } from "@chakra-ui/react";
 // Style
 import { ContainerHoverStyle } from "@/constants/style";
-// Icon
-import { LuInfo } from "react-icons/lu";
-// Component
-import { AboutMeData } from "@/constants/data/AboutMeData";
+import { LuGraduationCap } from "react-icons/lu";
 
-const AboutMeSection = () => {
+const EducationSection = () => {
   const { t } = useTranslation();
   const { colorMode } = useColorMode();
 
@@ -17,22 +14,14 @@ const AboutMeSection = () => {
       {/* Header */}
       <Flex alignItems="center" gap="0.5rem">
         <Box fontSize={{ base: "1.25rem", md: "1.15rem" }}>
-          <LuInfo />
+          <LuGraduationCap />
         </Box>
         <Text fontWeight="semibold" fontSize={{ base: "lg", lg: "xl" }}>
-          {t("About Me")}
+          {t("Education")}
         </Text>
       </Flex>
-      {/* Description */}
-      <List.Root listStyleType="none" gap="0.5rem">
-        {AboutMeData.map((item, index) => (
-          <List.Item key={index} fontSize="sm" color={colorMode === "dark" ? "secondaryTextColorForDark" : "darkText"}>
-            {t(item)}
-          </List.Item>
-        ))}
-      </List.Root>
     </Flex>
   );
 };
 
-export default AboutMeSection;
+export default EducationSection;

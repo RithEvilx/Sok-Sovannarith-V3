@@ -16,7 +16,7 @@ const WorkExperienceSection = () => {
     <Flex {...ContainerHoverStyle} padding="1.25rem" gap="1.5rem" bg={colorMode === "dark" ? "darkBg" : "transparent"}>
       {/* Header */}
       <Flex alignItems="center" gap="0.5rem">
-        <Box fontSize={{ lg: "1.15rem" }}>
+        <Box fontSize={{ base: "1.25rem", md: "1.15rem" }}>
           <LuBriefcaseBusiness />
         </Box>
         <Text fontWeight="semibold" fontSize={{ base: "lg", lg: "xl" }}>
