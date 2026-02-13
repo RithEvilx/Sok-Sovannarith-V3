@@ -5,12 +5,12 @@ import { useColorMode } from "@/components/ui/color-mode";
 import { Box, Button, Flex, Group, Heading, Image, Span, Text, useBreakpointValue } from "@chakra-ui/react";
 // Images
 import Love from "@/assets/icons/love.png";
-import Profile from "/profiles/profile.jpg";
-import ProfileSmile from "/profiles/profile-smile.png";
-import ProfileSleep from "/profiles/profile-sleep.png";
-import ProfileAwake from "/profiles/profile-awake.png";
 // Icons
 import { LuFileSpreadsheet, LuMail, LuMapPin, LuMoon, LuSun } from "react-icons/lu";
+// Data
+import { ProfileData } from "@/constants/data/ProfileData";
+// Constants
+import { ProfileImage, ProfileImageAwake, ProfileImageSleep, ProfileImageSmile } from "@/constants/app";
 
 const HeaderSection = () => {
   const navigate = useNavigate();
@@ -44,6 +44,12 @@ const HeaderSection = () => {
   // Only apply click behavior on mobile/md, not on lg
   const isMobileOrMd = useBreakpointValue({ base: true, md: true, lg: false });
 
+  const mailTo = `mailto:${ProfileData.email}?subject=Inquiry from Portfolio&body=Dear Mr. ${ProfileData.name},%0D%0A%0D%0AI saw your portfolio and would like to chat about...%0D%0A%0D%0ABest regards,`;
+
+  const handleNavigateResume = () => {
+    navigate("/resume");
+  };
+
   return (
     <Flex direction="column" gap="1rem">
       <Flex alignItems="center" gap={{ base: "1rem", lg: "1.75rem" }}>
@@ -74,14 +80,20 @@ const HeaderSection = () => {
             src={
               // If we are actively in a 'clicked' state (timer running)
               // OR we are hovering on desktop...
-              isClicked || isHovered ? (colorMode === "dark" ? ProfileAwake : ProfileSmile) : colorMode === "dark" ? ProfileSleep : Profile
+              isClicked || isHovered
+                ? colorMode === "dark"
+                  ? ProfileImageAwake
+                  : ProfileImageSmile
+                : colorMode === "dark"
+                  ? ProfileImageSleep
+                  : ProfileImage
             }
             alt="Handsome Boy!"
             loading="lazy"
             width="100%"
             height="100%"
             objectFit="cover"
-            transition="all 0.3s ease-in-out"
+            transition="all 0.3s linear"
           />
         </Box>
         {/* Info */}
@@ -89,7 +101,7 @@ const HeaderSection = () => {
           {/* Name */}
           <Flex alignItems="flex-start" justifyContent="space-between" gap="0.5rem">
             <Heading fontSize={{ base: "lg", md: "xl", lg: "2xl" }} position="relative" width="fit-content">
-              {t("SOK Sovannarith")}
+              {t(`${ProfileData.name}`)}
               <Box boxSize="25px" position="absolute" top="-1rem" right="-1rem">
                 <Image src={Love} alt="Love" loading="lazy" width="100%" height="100%" />
               </Box>
@@ -104,11 +116,11 @@ const HeaderSection = () => {
             <Span>
               <LuMapPin />
             </Span>
-            <Text>{t("Phnom Penh, Cambodia")}</Text>
+            <Text>{t(`${ProfileData.location}`)}</Text>
           </Flex>
-          {/* Role */}
+          {/* Position */}
           <Text fontWeight="semibold" marginBlock={{ base: "0.45rem 0.25rem", md: "0.35rem" }} fontSize={{ base: "sm", md: "md" }}>
-            {t("Frontend Developer")}
+            {t(`${ProfileData.position}`)}
           </Text>
           {/* Actions - Table & Desktop */}
           <Flex gap="0.5rem" display={{ base: "none", md: "flex" }}>
@@ -120,7 +132,7 @@ const HeaderSection = () => {
               _hover={{ bgColor: "darkBg", color: "lightText", transform: "translateY(-3px)" }}
               transition="all 0.3s"
               rounded="md"
-              onClick={() => navigate("/resume")}
+              onClick={handleNavigateResume}
             >
               <LuFileSpreadsheet />
               <Text lineHeight={1} fontWeight="semibold">
@@ -128,7 +140,7 @@ const HeaderSection = () => {
               </Text>
             </Button>
             {/* Send Email */}
-            <a href="mailto:soksovannarithx@gmail.com?subject=Inquiry from Portfolio&body=Dear Mr. Sovannarith,%0D%0A%0D%0AI saw your portfolio and would like to chat about...%0D%0A%0D%0ABest regards,">
+            <a href={mailTo}>
               <Button
                 paddingInline="1rem"
                 alignItems="center"
@@ -184,7 +196,7 @@ const HeaderSection = () => {
           transition="all 0.3s"
           rounded="md"
           size="xs"
-          onClick={() => navigate("/resume")}
+          onClick={handleNavigateResume}
         >
           <LuFileSpreadsheet />
           <Text lineHeight={1} fontWeight="semibold">
@@ -192,7 +204,7 @@ const HeaderSection = () => {
           </Text>
         </Button>
         {/* Send Email */}
-        <a href="mailto:soksovannarithx@gmail.com?subject=Inquiry from Portfolio&body=Dear Mr. Sovannarith,%0D%0A%0D%0AI saw your portfolio and would like to chat about...%0D%0A%0D%0ABest regards,">
+        <a href={mailTo}>
           <Button
             paddingInline="1rem"
             alignItems="center"
