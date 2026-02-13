@@ -1,10 +1,15 @@
+import { useEffect } from "react";
 
 const Resume = () => {
-  return (
-    <div>
-      Resume
-    </div>
-  )
-}
+  useEffect(() => {
+    const scrollTimer = setTimeout(() => {
+      window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    }, 0);
 
-export default Resume
+    return () => clearTimeout(scrollTimer);
+  }, []);
+
+  return <div>Resume</div>;
+};
+
+export default Resume;
