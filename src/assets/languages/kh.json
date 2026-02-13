@@ -6,8 +6,26 @@
     "Send Email": "ផ្ញើអ៊ីមែល",
     "Read Resume": "អានប្រវត្តិរូប",
     "SOK Sovannarith": "សុខ សុវណ្ណារិទ្ធ",
+    "UDAYA Technology": "ឧទ័យ ថេកណឡជី",
     "Work Experience": "បទពិសោធន៍ការងារ",
     "Frontend Developer": "អ្នកអភិវឌ្ឍន៍ផ្នែកមុខ",
-    "Phnom Penh, Cambodia": "រាជធានីភ្នំពេញ - ព្រះរាជាណាចក្រកម្ពុជា"
+    "Mar 2025 - Present": "មីនា ២០២៥ - បច្ចុប្បន្ន",
+    "Dec 2024 - Feb 2025": "ធ្នូ ២០២៤ - កុម្ភៈ ២០២៥",
+    "Web Developer Intern": "និស្សិតហាត់ការជាអ្នកអភិវឌ្ឍវេបសាយ",
+    "Cambodia Scholarship Center": "មជ្ឈមណ្ឌលអាហារូបករណ៏កម្ពុជា",
+    "Phnom Penh, Cambodia": "រាជធានីភ្នំពេញ - ព្រះរាជាណាចក្រកម្ពុជា",
+    "Maintained a custom, code-driven CMS (WordPress-like) and published fresh content daily.": "បានថែទាំប្រព័ន្ធគ្រប់គ្រងមាតិកា (ដូច WordPress) និងបានផ្សាយមាតិកាថ្មីរៀងរាល់ថ្ងៃ។",
+    "Performed on-page SEO: meta tags, structured data (JSON-LD), clean URLs, and internal linking.": "បានអនុវត្ត SEO លើទំព័រ៖ ស្លាកមេតា ទិន្នន័យរចនាសម្ព័ន្ធ (JSON-LD) URL ស្អាត និងការតភ្ជាប់ផ្ទៃក្នុង។",
+    "Built and updated content templates/components (HTML/JSX), ensuring brand consistency and accessibility.": "បានសាងសង់ និងធ្វើបច្ចុប្បន្នភាពគំរូ/ធាតុមាតិកា (HTML/JSX) ដើម្បីធានាថាមានភាពស្របគ្នានិងអាចចូលដំណើរការ។",
+    "Fixed UI bugs and layout regressions, verified cross-browser behavior (Chrome, Safari, Firefox, Edge).": "បានជួសជុលកំហុស UI និងការធ្លាក់ចុះរចនាសម្ព័ន្ធ ដោយផ្ទៀងផ្ទាត់អាកប្បកិរិយារវាងកម្មវិធីរុករកផ្សេងៗ (Chrome, Safari, Firefox, Edge)។",
+    "Engineered the company's internal system, building complex internal management interfaces for resource monitoring and control.": "បានរចនាប្រព័ន្ធផ្ទៃក្នុងរបស់ក្រុមហ៊ុន ដោយសាងសង់ចំណុចប្រទាក់គ្រប់គ្រងផ្ទៃក្នុងស្មុគស្មាញសម្រាប់ការត្រួតពិនិត្យ និងគ្រប់គ្រងធនធាន។",
+    "Integrated secure real-time payment processing via ABA Bank API, enabling seamless online transactions for end-users.": "បានបញ្ចូលប្រព័ន្ធដំណើរការទូទាត់ប្រាក់ក្នុងពេលវេលាពិតតាមរយៈ ABA Bank API ដែលអនុញ្ញាតឲ្យមានប្រតិបត្តិការអនឡាញដោយរលូនសម្រាប់អ្នកប្រើចុងក្រោយ។",
+    "Mastered modern UI frameworks, transitioning projects from Chakra UI v2 to v3 while maintaining accessibility and responsive standards.": "បានជំនាញលើស៊ុម UI ទំនើប ដោយផ្លាស់ប្តូរគម្រោងពី Chakra UI v2 ទៅ v3 ខណៈដែលរក្សាមាំមាត្រដែលអាចចូលដំណើរការ និងការឆ្លើយតប។",
+    "Optimized application performance and data synchronization using TanStack React Query for efficient API communication and caching.": "បានបង្កើនប្រសិទ្ធភាពកម្មវិធី និងសមកាលកម្មទិន្នន័យ ដោយប្រើ TanStack React Query សម្រាប់ការទំនាក់ទំនង API និងការផ្ទុកក្នុងចងចាំយ៉ាងមានប្រសិទ្ធភាព។",
+    "Collaborated in Agile workflows using Git/GitHub for version control, ensuring smooth production deployments and bug-free releases.": "បានសហការក្នុងដំណើរការជាប្រព័ន្ធ Agile ដោយប្រើ Git/GitHub សម្រាប់ការគ្រប់គ្រងកំណែ ដើម្បីធានាថាការដាក់បញ្ចូលផលិតកម្ម និងការចេញផ្សាយដែលគ្មានកំហុសមានភាពរលូន។",
+    "Led the frontend development of a scalable hotel booking platform using React.js, TypeScript, and Chakra UI (v3), focusing on high-performance UI/UX.": "ដឹកនាំការអភិវឌ្ឍផ្នែកមុខនៃវេទិកាកក់សណ្ឋាគារដែលអាចពង្រីកបាន ដោយប្រើ React.js, TypeScript និង Chakra UI (v3) ដែលផ្តោតលើ UI/UX ដែលមានប្រសិទ្ធភាពខ្ពស់។",
+    "I'm always eager to learn new technologies, refine my craft, and collaborate with others to create meaningful digital solutions that make a real impact.": "ខ្ញុំ​តែងតែ​មាន​ប្រាថ្នា​ចង់​សិក្សា​បច្ចេកវិទ្យា​ថ្មីៗ បង្កើន​គុណភាព​ជំនាញ​របស់ខ្ញុំ និង​សហការ​ជាមួយ​អ្នកដទៃ ដើម្បី​បង្កើត​ដំណោះស្រាយ​ឌីជីថល​ដែល​មាន​អត្ថន័យ និង​មាន​ឥទ្ធិពល​ពិតប្រាកដ។",
+    "I'm a passionate Frontend Developer with a strong foundation in web technologies and a keen eye for design and usability. I graduated in May 2024 with a Bachelor's degree in Computer Science from the Royal University of Phnom Penh.": "ខ្ញុំ​ជា​អ្នក​អភិវឌ្ឍ​ផ្នែក​មុខ (Frontend Developer) ដែល​មាន​ក្ដីស្រលាញ់​ការងារ និង​មាន​គ្រឹះរឹងមាំ​លើ​បច្ចេកវិទ្យា​បណ្ដាញ និង​ការ​យកចិត្តទុកដាក់​ខ្ពស់​ចំពោះ​ការ​រចនា និង​ភាព​ងាយស្រួល​ប្រើ។ ខ្ញុំ​បាន​បញ្ចប់​ការសិក្សា​ក្នុង​ខែ​ឧសភា ឆ្នាំ ២០២៤ ​បរិញ្ញាបត្រ​វិទ្យាសាស្ត្រ​កុំព្យូទ័រ​ពី​សាកលវិទ្យាល័យ​ភ្នំពេញ (RUPP)។",
+    "Since then, I've been applying my skills to build clean, functional, and engaging web experiences that balance performance and aesthetics. I enjoy turning ideas into intuitive interfaces through modern JavaScript frameworks, responsive design, and best practices in UI/UX.": "ចាប់តាំងពីពេលនោះមក ខ្ញុំ​បាន​ប្រើប្រាស់​ជំនាញ​របស់ខ្ញុំ ដើម្បី​បង្កើត​បទពិសោធន៍​វេប​ដែល​ស្អាត មាន​មុខងារ និង​ទាក់ទាញ ដោយ​ថែរក្សា​តុល្យភាព​រវាង​ប្រសិទ្ធភាព និង​សោភ័ណ្ឌភាព។ ខ្ញុំ​ចូលចិត្ត​បម្លែង​គំនិត​ឲ្យ​ជា​ចំណុច​ប្រទាក់​ដែល​ងាយ​យល់ តាមរយៈ​គ្រោងការ JavaScript ទំនើប ការរចនា​ឆ្លើយតប (responsive) និង​អនុវត្តល្អ​បំផុត​ក្នុង UI/UX។"
   }
 }
