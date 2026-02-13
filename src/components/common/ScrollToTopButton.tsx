@@ -40,7 +40,7 @@ const ScrollToTopButton = () => {
       onClick={scrollToTop}
       // 1. Fixed Position - Bottom Center
       position="fixed"
-      bottom="2rem" // Distance from the bottom
+      bottom="1.25rem" // Distance from the bottom
       left="50%" // Move to the middle of the screen
       // 2. Centering & Animation Logic
       // translateX(-50%) centers it horizontally
@@ -51,8 +51,8 @@ const ScrollToTopButton = () => {
       alignItems="center"
       justifyContent="center"
       padding="0"
-      width="12" // Slightly larger for a middle-screen button
-      height="12"
+      width="10" // Slightly larger for a middle-screen button
+      height="10"
       // 4. Visibility and Transitions
       opacity={isVisible ? 1 : 0}
       pointerEvents={isVisible ? "auto" : "none"}
@@ -72,7 +72,7 @@ const ScrollToTopButton = () => {
       }}
       backdropFilter="blur(3px)"
     >
-      <LuArrowUp size="1.5rem" />
+      <LuArrowUp />
     </Button>
   );
 };
