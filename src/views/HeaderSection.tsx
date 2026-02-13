@@ -1,17 +1,19 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useColorMode } from "@/components/ui/color-mode";
 import { Box, Button, Flex, Group, Heading, Image, Span, Text, useBreakpointValue } from "@chakra-ui/react";
-// Image
+// Images
+import Love from "@/assets/icons/love.png";
 import Profile from "/profiles/profile.jpg";
 import ProfileSmile from "/profiles/profile-smile.png";
 import ProfileSleep from "/profiles/profile-sleep.png";
 import ProfileAwake from "/profiles/profile-awake.png";
-import Love from "@/assets/icons/love.png";
 // Icons
-import { LuDownload, LuMail, LuMapPin, LuMoon, LuSun } from "react-icons/lu";
+import { LuFileSpreadsheet, LuMail, LuMapPin, LuMoon, LuSun } from "react-icons/lu";
 
 const HeaderSection = () => {
+  const navigate = useNavigate();
   const { i18n, t } = useTranslation();
   const [lng, setLng] = useState<string>(() => localStorage.getItem("language") || "en");
   const [isHovered, setIsHovered] = useState(false);
@@ -45,7 +47,6 @@ const HeaderSection = () => {
   return (
     <Flex direction="column" gap="1rem">
       <Flex alignItems="center" gap={{ base: "1rem", lg: "1.75rem" }}>
-        {/* Profile */}
         {/* Profile */}
         <Box
           width={{ base: "100px", md: "150px", lg: "150px" }}
@@ -111,7 +112,7 @@ const HeaderSection = () => {
           </Text>
           {/* Actions - Table & Desktop */}
           <Flex gap="0.5rem" display={{ base: "none", md: "flex" }}>
-            {/* Download CV */}
+            {/* Read Resume */}
             <Button
               paddingInline="1rem"
               alignItems="center"
@@ -119,26 +120,29 @@ const HeaderSection = () => {
               _hover={{ bgColor: "darkBg", color: "lightText", transform: "translateY(-3px)" }}
               transition="all 0.3s"
               rounded="md"
+              onClick={() => navigate("/resume")}
             >
-              <LuDownload />
+              <LuFileSpreadsheet />
               <Text lineHeight={1} fontWeight="semibold">
-                {t("Download CV")}
+                {t("Read Resume")}
               </Text>
             </Button>
             {/* Send Email */}
-            <Button
-              paddingInline="1rem"
-              alignItems="center"
-              variant="outline"
-              _hover={{ bgColor: "darkBg", color: "lightText", transform: "translateY(-3px)" }}
-              transition="all 0.3s"
-              rounded="md"
-            >
-              <LuMail />
-              <Text lineHeight={1} fontWeight="semibold">
-                {t("Send Email")}
-              </Text>
-            </Button>
+            <a href="mailto:soksovannarithx@gmail.com?subject=Inquiry from Portfolio&body=Dear Mr. Sovannarith,%0D%0A%0D%0AI saw your portfolio and would like to chat about...%0D%0A%0D%0ABest regards,">
+              <Button
+                paddingInline="1rem"
+                alignItems="center"
+                variant="outline"
+                _hover={{ bgColor: "darkBg", color: "lightText", transform: "translateY(-3px)" }}
+                transition="all 0.3s"
+                rounded="md"
+              >
+                <LuMail />
+                <Text lineHeight={1} fontWeight="semibold">
+                  {t("Send Email")}
+                </Text>
+              </Button>
+            </a>
             {/* Language Switcher */}
             <Group attached rounded="lg">
               <Button
@@ -170,7 +174,7 @@ const HeaderSection = () => {
       </Flex>
       {/* Actions - Mobile */}
       <Flex gap="0.5rem" display={{ base: "flex", md: "none" }}>
-        {/* Download CV */}
+        {/* Read Resume */}
         <Button
           paddingInline="1rem"
           alignItems="center"
@@ -180,28 +184,31 @@ const HeaderSection = () => {
           transition="all 0.3s"
           rounded="md"
           size="xs"
+          onClick={() => navigate("/resume")}
         >
-          <LuDownload />
+          <LuFileSpreadsheet />
           <Text lineHeight={1} fontWeight="semibold">
-            {t("Download CV")}
+            {t("Read Resume")}
           </Text>
         </Button>
         {/* Send Email */}
-        <Button
-          paddingInline="1rem"
-          alignItems="center"
-          variant="outline"
-          _hover={{ bgColor: "darkBg", color: "lightText", transform: "translateY(-3px)" }}
-          _active={{ bgColor: "darkBg", color: "lightText", transform: "translateY(-3px)" }}
-          transition="all 0.3s"
-          rounded="md"
-          size="xs"
-        >
-          <LuMail />
-          <Text lineHeight={1} fontWeight="semibold">
-            {t("Send Email")}
-          </Text>
-        </Button>
+        <a href="mailto:soksovannarithx@gmail.com?subject=Inquiry from Portfolio&body=Dear Mr. Sovannarith,%0D%0A%0D%0AI saw your portfolio and would like to chat about...%0D%0A%0D%0ABest regards,">
+          <Button
+            paddingInline="1rem"
+            alignItems="center"
+            variant="outline"
+            _hover={{ bgColor: "darkBg", color: "lightText", transform: "translateY(-3px)" }}
+            _active={{ bgColor: "darkBg", color: "lightText", transform: "translateY(-3px)" }}
+            transition="all 0.3s"
+            rounded="md"
+            size="xs"
+          >
+            <LuMail />
+            <Text lineHeight={1} fontWeight="semibold">
+              {t("Send Email")}
+            </Text>
+          </Button>
+        </a>
         {/* Language Switcher */}
         <Group attached rounded="lg">
           <Button
