@@ -1,5 +1,4 @@
 import { useTranslation } from "react-i18next";
-import { useColorMode } from "@/components/ui/color-mode";
 import { Box, Flex, Text } from "@chakra-ui/react";
 // Style
 import { ContainerHoverStyle } from "@/constants/style";
@@ -12,10 +11,9 @@ import { EducationData } from "@/constants/data/EducationData";
 
 const EducationSection = () => {
   const { t } = useTranslation();
-  const { colorMode } = useColorMode();
 
   return (
-    <Flex {...ContainerHoverStyle} padding="1.25rem" gap="1.5rem" bg={colorMode === "dark" ? "darkBg" : "transparent"}>
+    <Flex {...ContainerHoverStyle} paddingBottom="0.25rem">
       {/* Header */}
       <Flex alignItems="center" gap="0.5rem">
         <Box fontSize={{ base: "1.25rem", md: "1.15rem" }}>
@@ -25,6 +23,7 @@ const EducationSection = () => {
           {t("Education")}
         </Text>
       </Flex>
+      {/* Timeline */}
       <TimelineComponent data={EducationData} />
     </Flex>
   );

@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
-import { useColorMode } from "../ui/color-mode";
 import { Button } from "@chakra-ui/react";
+// Style
+import { useColorModeTheme } from "@/constants/style";
+//Icon
 import { LuArrowUp } from "react-icons/lu";
 
 const ScrollToTopButton = () => {
-  const { colorMode } = useColorMode();
   const [isVisible, setIsVisible] = useState(false);
+  const { bgColorMode, borderColorMode } = useColorModeTheme();
 
   // 1. Logic to show/hide button based on scroll position
   useEffect(() => {
@@ -58,10 +60,14 @@ const ScrollToTopButton = () => {
       zIndex="skipLink"
       // Styling
       border="1px solid"
-      borderColor={colorMode === "dark" ? "borderColorForDark" : "borderColorForLight"}
+      borderColor={borderColorMode}
       rounded="full"
       _hover={{
-        bg: colorMode === "dark" ? "whiteAlpha.200" : "blackAlpha.100",
+        bgColor: bgColorMode,
+        transform: "translateX(-50%) scale(1.1)", // Keep it centered while hovering
+      }}
+      _active={{
+        bgColor: bgColorMode,
         transform: "translateX(-50%) scale(1.1)", // Keep it centered while hovering
       }}
       backdropFilter="blur(3px)"

@@ -5,6 +5,8 @@ import { useColorMode } from "@/components/ui/color-mode";
 import { Box, Button, Flex, Group, Heading, Image, Span, Text, useBreakpointValue } from "@chakra-ui/react";
 // Images
 import Love from "@/assets/icons/love.png";
+// Style
+import { useColorModeTheme } from "@/constants/style";
 // Icons
 import { LuFileSpreadsheet, LuMail, LuMapPin, LuMoon, LuSun } from "react-icons/lu";
 // Data
@@ -18,6 +20,9 @@ const HeaderSection = () => {
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
   const [lng, setLng] = useState<string>(() => localStorage.getItem("language") || "en");
+
+  const { colorMode, toggleColorMode } = useColorMode();
+  const { bgColorMode, textColorMode } = useColorModeTheme();
 
   // Keep i18next in sync on first render (and if lng changes)
   useEffect(() => {
@@ -38,8 +43,6 @@ const HeaderSection = () => {
   const handleChangeLanguage = (next: "en" | "kh") => {
     setLng(next); // triggers re-render + effect above runs
   };
-
-  const { colorMode, toggleColorMode } = useColorMode();
 
   // Only apply click behavior on mobile/md, not on lg
   const isMobileOrMd = useBreakpointValue({ base: true, md: true, lg: false });
@@ -80,13 +83,7 @@ const HeaderSection = () => {
             src={
               // If we are actively in a 'clicked' state (timer running)
               // OR we are hovering on desktop...
-              isClicked || isHovered
-                ? colorMode === "dark"
-                  ? ProfileImageAwake
-                  : ProfileImageSmile
-                : colorMode === "dark"
-                  ? ProfileImageSleep
-                  : ProfileImage
+              isClicked || isHovered ? (colorMode === "dark" ? ProfileImageAwake : ProfileImageSmile) : colorMode === "dark" ? ProfileImageSleep : ProfileImage
             }
             alt="Handsome Boy!"
             loading="lazy"
@@ -122,18 +119,10 @@ const HeaderSection = () => {
           <Text fontWeight="semibold" marginBlock={{ base: "0.45rem 0.25rem", md: "0.35rem" }} fontSize={{ base: "sm", md: "md" }}>
             {t(`${ProfileData.role}`)}
           </Text>
-          {/* Actions - Table & Desktop */}
+          {/* Actions Button - Table & Desktop */}
           <Flex gap="0.5rem" display={{ base: "none", md: "flex" }}>
             {/* Read Resume */}
-            <Button
-              paddingInline="1rem"
-              alignItems="center"
-              variant="outline"
-              _hover={{ bgColor: "darkBg", color: "lightText", transform: "translateY(-3px)" }}
-              transition="all 0.3s"
-              rounded="md"
-              onClick={handleNavigateResume}
-            >
+            <Button paddingInline="1rem" alignItems="center" variant="outline" _hover={{ bgColor: bgColorMode, color: textColorMode, transform: "translateY(-3px)" }} transition="all 0.3s" rounded="md" onClick={handleNavigateResume}>
               <LuFileSpreadsheet />
               <Text lineHeight={1} fontWeight="semibold">
                 {t("Read Resume")}
@@ -141,14 +130,7 @@ const HeaderSection = () => {
             </Button>
             {/* Send Email */}
             <a href={mailTo}>
-              <Button
-                paddingInline="1rem"
-                alignItems="center"
-                variant="outline"
-                _hover={{ bgColor: "darkBg", color: "lightText", transform: "translateY(-3px)" }}
-                transition="all 0.3s"
-                rounded="md"
-              >
+              <Button paddingInline="1rem" alignItems="center" variant="outline" _hover={{ bgColor: bgColorMode, color: textColorMode, transform: "translateY(-3px)" }} transition="all 0.3s" rounded="md">
                 <LuMail />
                 <Text lineHeight={1} fontWeight="semibold">
                   {t("Send Email")}
@@ -157,47 +139,21 @@ const HeaderSection = () => {
             </a>
             {/* Language Switcher */}
             <Group attached rounded="lg">
-              <Button
-                variant="outline"
-                fontWeight="semibold"
-                onClick={() => handleChangeLanguage("kh")}
-                bgColor={lng === "kh" ? "darkBg" : undefined}
-                color={lng === "kh" ? "lightText" : undefined}
-                _hover={{ transform: "translateY(-3px)" }}
-                _active={{ transform: "translateY(-3px)" }}
-              >
+              <Button variant="outline" fontWeight="semibold" onClick={() => handleChangeLanguage("kh")} bgColor={lng === "kh" ? bgColorMode : undefined} color={lng === "kh" ? textColorMode : undefined} _hover={{ transform: "translateY(-3px)" }} _active={{ transform: "translateY(-3px)" }}>
                 {t("KH")}
               </Button>
 
-              <Button
-                variant="outline"
-                fontWeight="semibold"
-                onClick={() => handleChangeLanguage("en")}
-                bgColor={lng === "en" ? "darkBg" : undefined}
-                color={lng === "en" ? "lightText" : undefined}
-                _hover={{ transform: "translateY(-3px)" }}
-                _active={{ transform: "translateY(-3px)" }}
-              >
+              <Button variant="outline" fontWeight="semibold" onClick={() => handleChangeLanguage("en")} bgColor={lng === "en" ? bgColorMode : undefined} color={lng === "en" ? textColorMode : undefined} _hover={{ transform: "translateY(-3px)" }} _active={{ transform: "translateY(-3px)" }}>
                 {t("EN")}
               </Button>
             </Group>
           </Flex>
         </Flex>
       </Flex>
-      {/* Actions - Mobile */}
+      {/* Actions Button - Mobile */}
       <Flex gap="0.5rem" display={{ base: "flex", md: "none" }}>
         {/* Read Resume */}
-        <Button
-          paddingInline="1rem"
-          alignItems="center"
-          variant="outline"
-          _hover={{ bgColor: "darkBg", color: "lightText", transform: "translateY(-3px)" }}
-          _active={{ bgColor: "darkBg", color: "lightText", transform: "translateY(-3px)" }}
-          transition="all 0.3s"
-          rounded="md"
-          size="xs"
-          onClick={handleNavigateResume}
-        >
+        <Button paddingInline="1rem" alignItems="center" variant="outline" _hover={{ bgColor: bgColorMode, color: textColorMode, transform: "translateY(-3px)" }} _active={{ bgColor: bgColorMode, color: textColorMode, transform: "translateY(-3px)" }} transition="all 0.3s" rounded="md" size="xs" onClick={handleNavigateResume}>
           <LuFileSpreadsheet />
           <Text lineHeight={1} fontWeight="semibold">
             {t("Read Resume")}
@@ -205,16 +161,7 @@ const HeaderSection = () => {
         </Button>
         {/* Send Email */}
         <a href={mailTo}>
-          <Button
-            paddingInline="1rem"
-            alignItems="center"
-            variant="outline"
-            _hover={{ bgColor: "darkBg", color: "lightText", transform: "translateY(-3px)" }}
-            _active={{ bgColor: "darkBg", color: "lightText", transform: "translateY(-3px)" }}
-            transition="all 0.3s"
-            rounded="md"
-            size="xs"
-          >
+          <Button paddingInline="1rem" alignItems="center" variant="outline" _hover={{ bgColor: bgColorMode, color: textColorMode, transform: "translateY(-3px)" }} _active={{ bgColor: bgColorMode, color: textColorMode, transform: "translateY(-3px)" }} transition="all 0.3s" rounded="md" size="xs">
             <LuMail />
             <Text lineHeight={1} fontWeight="semibold">
               {t("Send Email")}
@@ -223,29 +170,11 @@ const HeaderSection = () => {
         </a>
         {/* Language Switcher */}
         <Group attached rounded="lg">
-          <Button
-            variant="outline"
-            fontWeight="semibold"
-            onClick={() => handleChangeLanguage("kh")}
-            bgColor={lng === "kh" ? "darkBg" : undefined}
-            color={lng === "kh" ? "lightText" : undefined}
-            size="xs"
-            _hover={{ transform: "translateY(-3px)" }}
-            _active={{ transform: "translateY(-3px)" }}
-            transition="all 0.3s"
-          >
+          <Button variant="outline" fontWeight="semibold" onClick={() => handleChangeLanguage("kh")} bgColor={lng === "kh" ? bgColorMode : undefined} color={lng === "kh" ? textColorMode : undefined} size="xs" _hover={{ transform: "translateY(-3px)" }} _active={{ transform: "translateY(-3px)" }} transition="all 0.3s">
             {t("KH")}
           </Button>
 
-          <Button
-            variant="outline"
-            onClick={() => handleChangeLanguage("en")}
-            bgColor={lng === "en" ? "darkBg" : undefined}
-            color={lng === "en" ? "lightText" : undefined}
-            size="xs"
-            _hover={{ transform: "translateY(-3px)" }}
-            _active={{ transform: "translateY(-3px)" }}
-          >
+          <Button variant="outline" onClick={() => handleChangeLanguage("en")} bgColor={lng === "en" ? bgColorMode : undefined} color={lng === "en" ? textColorMode : undefined} size="xs" _hover={{ transform: "translateY(-3px)" }} _active={{ transform: "translateY(-3px)" }}>
             {t("EN")}
           </Button>
         </Group>

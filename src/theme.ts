@@ -2,16 +2,19 @@ import { defineConfig, defineTokens } from "@chakra-ui/react";
 
 export const tokens = defineTokens({
   colors: {
-    lightText: { value: "#ffffff" },
-    lightBg: { value: "#fafafa" },
-    darkText: { value: "#000000" },
-    darkBg: { value: "#111111" },
-    borderColorForLight: { value: "#DADBE2" },
+    textForLight: { value: "#1a1a1a" },
+    textForDark: { value: "#d6d6d6" },
+
+    secondaryTextColor: { value: "#575757" },
+
+    textMutedForLight: { value: "#71717A" },
+    textMutedForDark: { value: "#A1A1AA" },
+
+    bgForLight: { value: "#f5f5f5" },
+    bgForDark: { value: "#18181B" },
+
+    borderColorForLight: { value: "#DDDDDD" },
     borderColorForDark: { value: "#222222" },
-    primaryTextColor: { value: "#4a4f55" },
-    secondaryTextColor: { value: "#7a838d" },
-    secondaryTextColorForDark: { value: "#74787c" },
-    secondaryTextColorForLight: { value: "#414244" },
   },
 });
 
