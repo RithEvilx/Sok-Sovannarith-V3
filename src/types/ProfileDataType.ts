@@ -1,6 +1,6 @@
 export type ProfileDataType = {
   name: string;
   location: string;
-  position: string;
+  role: string;
   email: string;
 }

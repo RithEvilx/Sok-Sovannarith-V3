@@ -1,14 +1,14 @@
 import { useTranslation } from "react-i18next";
+import { Box, Flex, List, Text } from "@chakra-ui/react";
 import { useColorMode } from "@/components/ui/color-mode";
-import { Box, Flex, Text } from "@chakra-ui/react";
 // Style
 import { ContainerHoverStyle } from "@/constants/style";
 // Icon
-import { LuBriefcaseBusiness } from "react-icons/lu";
+import { LuInfo } from "react-icons/lu";
 // Component
-import TimelineComponent from "@/components/views/TimelineComponent";
+import { AboutMeData } from "@/constants/data/AboutMeData";
 
-const WorkExperienceSection = () => {
+const AboutMeSection = () => {
   const { t } = useTranslation();
   const { colorMode } = useColorMode();
 
@@ -17,15 +17,22 @@ const WorkExperienceSection = () => {
       {/* Header */}
       <Flex alignItems="center" gap="0.5rem">
         <Box fontSize={{ lg: "1.15rem" }}>
-          <LuBriefcaseBusiness />
+          <LuInfo />
         </Box>
         <Text fontWeight="semibold" fontSize={{ base: "lg", lg: "xl" }}>
-          {t("Work Experience")}
+          {t("About Me")}
         </Text>
       </Flex>
-      <TimelineComponent />
+      {/* Description */}
+      <List.Root listStyleType="none" gap="0.5rem">
+        {AboutMeData.map((item, index) => (
+          <List.Item key={index} fontSize="sm" color={colorMode === "dark" ? "secondaryTextColorForDark" : "darkText"}>
+            {t(item)}
+          </List.Item>
+        ))}
+      </List.Root>
     </Flex>
   );
 };
 
-export default WorkExperienceSection;
+export default AboutMeSection;

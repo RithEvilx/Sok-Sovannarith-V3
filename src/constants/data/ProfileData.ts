@@ -1,8 +1,8 @@
 import type { ProfileDataType } from "@/types/ProfileDataType";
 
 export const ProfileData: ProfileDataType = {
-  name: "Sok Sovannarith",
+  name: "SOK Sovannarith",
   location: "Phnom Penh, Cambodia",
-  position: "Frontend Developer",
+  role: "Frontend Developer",
   email: "soksovannarithx@gmail.com",
 };

@@ -15,9 +15,9 @@ import { ProfileImage, ProfileImageAwake, ProfileImageSleep, ProfileImageSmile }
 const HeaderSection = () => {
   const navigate = useNavigate();
   const { i18n, t } = useTranslation();
-  const [lng, setLng] = useState<string>(() => localStorage.getItem("language") || "en");
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
+  const [lng, setLng] = useState<string>(() => localStorage.getItem("language") || "en");
 
   // Keep i18next in sync on first render (and if lng changes)
   useEffect(() => {
@@ -61,7 +61,7 @@ const HeaderSection = () => {
           minHeight={{ base: "100px", md: "150px", lg: "150px" }}
           rounded="lg"
           border="1px solid"
-          borderColor="borderColor"
+          borderColor={colorMode === "dark" ? "borderColorForDark" : "borderColorForLight"}
           overflow="hidden"
           // Desktop Hover handlers
           onMouseEnter={() => !isMobileOrMd && setIsHovered(true)}
@@ -118,9 +118,9 @@ const HeaderSection = () => {
             </Span>
             <Text>{t(`${ProfileData.location}`)}</Text>
           </Flex>
-          {/* Position */}
+          {/* Role */}
           <Text fontWeight="semibold" marginBlock={{ base: "0.45rem 0.25rem", md: "0.35rem" }} fontSize={{ base: "sm", md: "md" }}>
-            {t(`${ProfileData.position}`)}
+            {t(`${ProfileData.role}`)}
           </Text>
           {/* Actions - Table & Desktop */}
           <Flex gap="0.5rem" display={{ base: "none", md: "flex" }}>

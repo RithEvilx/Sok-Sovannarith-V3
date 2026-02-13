@@ -1,24 +1,55 @@
-import { Box, Flex, GridItem, SimpleGrid } from "@chakra-ui/react";
+import { Box, Flex, GridItem, Presence, SimpleGrid, useDisclosure } from "@chakra-ui/react";
 // Component
 import HeaderSection from "./HeaderSection";
-import AboutUsSection from "./AboutUsSection";
+import AboutUsSection from "./AboutMeSection";
 import WorkExperienceSection from "./WorkExperienceSection";
+import { useEffect } from "react";
 
 const Home = () => {
+  const { open, onOpen } = useDisclosure();
+
+  useEffect(() => {
+    onOpen();
+  }, [onOpen]);
+
   return (
     <>
-      <Box marginBottom="3rem">
-        <HeaderSection />
-      </Box>
+      <Presence
+        lazyMount
+        unmountOnExit
+        present={open}
+        animationStyle={{ _open: "scale-fade-in", _closed: "scale-fade-out" }}
+        animationDuration="1000ms"
+      >
+        <Box marginBottom={{ base: "2rem", lg: "3rem" }}>
+          <HeaderSection />
+        </Box>
+      </Presence>
       <SimpleGrid columns={12} gap="1rem">
-        <GridItem colSpan={5}>
+        <GridItem colSpan={{ base: 12, lg: 5 }}>
           <Flex direction="column" gap="1rem">
-            <AboutUsSection />
+            <Presence
+              lazyMount
+              unmountOnExit
+              present={open}
+              animationStyle={{ _open: "scale-fade-in", _closed: "scale-fade-out" }}
+              animationDuration="1000ms"
+            >
+              <AboutUsSection />
+            </Presence>
           </Flex>
         </GridItem>
-        <GridItem colSpan={7}>
+        <GridItem colSpan={{ base: 12, lg: 7 }}>
           <Flex direction="column" gap="1rem">
-            <WorkExperienceSection />
+            <Presence
+              lazyMount
+              unmountOnExit
+              present={open}
+              animationStyle={{ _open: "scale-fade-in", _closed: "scale-fade-out" }}
+              animationDuration="1000ms"
+            >
+              <WorkExperienceSection />
+            </Presence>
           </Flex>
         </GridItem>
       </SimpleGrid>

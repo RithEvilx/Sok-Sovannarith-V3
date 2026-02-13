@@ -5,9 +5,13 @@ export const tokens = defineTokens({
     lightText: { value: "#ffffff" },
     lightBg: { value: "#fafafa" },
     darkText: { value: "#000000" },
-    darkBg: { value: "#222222" },
-    borderColor: { value: "#DADBE2" },
+    darkBg: { value: "#111111" },
+    borderColorForLight: { value: "#DADBE2" },
+    borderColorForDark: { value: "#222222" },
+    primaryTextColor: { value: "#4a4f55" },
     secondaryTextColor: { value: "#7a838d" },
+    secondaryTextColorForDark: { value: "#74787c" },
+    secondaryTextColorForLight: { value: "#414244" },
   },
 });
 
