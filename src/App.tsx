@@ -7,6 +7,7 @@ import { Float } from "@chakra-ui/react";
 import Router from "./router";
 import { Toaster } from "./components/ui/toaster";
 import { Provider } from "./components/ui/provider";
+import ScrollToTopButton from "./components/common/ScrollToTopButton";
 
 const App = () => {
   const [isDebug] = useState<boolean>(() => localStorage.getItem("debug") === "true");
@@ -27,6 +28,7 @@ const App = () => {
     <Provider>
       <Toaster />
       <Router />
+      <ScrollToTopButton />
       {isDebug && (
         <Float top="20px" right="60px" zIndex={99999}>
           Version {version}

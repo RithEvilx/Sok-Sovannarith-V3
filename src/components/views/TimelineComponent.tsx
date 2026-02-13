@@ -53,12 +53,12 @@ const TimelineComponent = ({ data }: TimelineComponentProps) => {
             >
               <Timeline.Title>
                 <Text fontWeight="semibold" fontSize="md">
-                  {(item.description?.length ?? 0) > 0 ? t(item.role) : item.title}
+                  {(item.description?.length ?? 0) > 0 ? t(item.role) : t(item.title)}
                 </Text>
               </Timeline.Title>
               <Timeline.Description fontWeight="medium" color={isSelected ? (colorMode === "dark" ? "white" : "black") : "secondaryTextColor"}>
                 <Flex alignItems="center" flexWrap="wrap" gap="0.25rem">
-                  <Text>{(item.description?.length ?? 0) > 0 ? t(item.title) : item.role}</Text>
+                  <Text>{(item.description?.length ?? 0) > 0 ? t(item.title) : t(item.role)}</Text>
                   {item.date && <Separator orientation="vertical" height="3" variant="solid" colorPalette="gray.800" />}
                   <Text>{t(item.date)}</Text>
                 </Flex>

@@ -1,0 +1,74 @@
+import { useState, useEffect } from "react";
+import { useColorMode } from "../ui/color-mode";
+import { Button } from "@chakra-ui/react";
+import { LuArrowUp } from "react-icons/lu";
+
+const ScrollToTopButton = () => {
+  const { colorMode } = useColorMode();
+  const [isVisible, setIsVisible] = useState(false);
+
+  // 1. Logic to show/hide button based on scroll position
+  useEffect(() => {
+    const toggleVisibility = () => {
+      // Show button if page is scrolled more than 400px
+      if (window.scrollY > 100) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+    };
+
+    window.addEventListener("scroll", toggleVisibility);
+
+    // Clean up the listener on unmount
+    return () => window.removeEventListener("scroll", toggleVisibility);
+  }, []);
+
+  // 2. Scroll to top function
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  return (
+    <Button
+      variant="outline"
+      onClick={scrollToTop}
+      // 1. Fixed Position - Bottom Center
+      position="fixed"
+      bottom="2rem" // Distance from the bottom
+      left="50%" // Move to the middle of the screen
+      // 2. Centering & Animation Logic
+      // translateX(-50%) centers it horizontally
+      // translateY(0) vs translateY(20px) handles the pop-up animation
+      transform={isVisible ? "translateX(-50%) translateY(0)" : "translateX(-50%) translateY(20px)"}
+      // 3. Making the icon perfectly centered inside
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+      padding="0"
+      width="12" // Slightly larger for a middle-screen button
+      height="12"
+      // 4. Visibility and Transitions
+      opacity={isVisible ? 1 : 0}
+      pointerEvents={isVisible ? "auto" : "none"}
+      transition="all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)" // "Bouncy" entrance
+      zIndex="skipLink"
+      // Styling
+      border="1px solid"
+      borderColor={colorMode === "dark" ? "borderColorForDark" : "borderColorForLight"}
+      rounded="full"
+      _hover={{
+        bg: colorMode === "dark" ? "whiteAlpha.200" : "blackAlpha.100",
+        transform: "translateX(-50%) scale(1.1)", // Keep it centered while hovering
+      }}
+      backdropFilter="blur(3px)"
+    >
+      <LuArrowUp size="1.5rem" />
+    </Button>
+  );
+};
+
+export default ScrollToTopButton;
