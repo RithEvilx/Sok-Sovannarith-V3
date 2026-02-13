@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useColorMode } from "@/components/ui/color-mode";
-import { Box, Button, Flex, Group, Heading, Image, Span, Text } from "@chakra-ui/react";
+import { Box, Button, Flex, Group, Heading, Image, Span, Text, useBreakpointValue } from "@chakra-ui/react";
 // Image
-import Logo from "/profile.jpg";
+import Profile from "/profiles/profile.jpg";
+import ProfileSmile from "/profiles/profile-smile.png";
+import ProfileSleep from "/profiles/profile-sleep.png";
+import ProfileAwake from "/profiles/profile-awake.png";
 import Love from "@/assets/icons/love.png";
 // Icons
 import { LuDownload, LuMail, LuMapPin, LuMoon, LuSun } from "react-icons/lu";
@@ -11,6 +14,8 @@ import { LuDownload, LuMail, LuMapPin, LuMoon, LuSun } from "react-icons/lu";
 const HeaderSection = () => {
   const { i18n, t } = useTranslation();
   const [lng, setLng] = useState<string>(() => localStorage.getItem("language") || "en");
+  const [isHovered, setIsHovered] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
 
   // Keep i18next in sync on first render (and if lng changes)
   useEffect(() => {
@@ -18,15 +23,29 @@ const HeaderSection = () => {
     localStorage.setItem("language", lng);
   }, [lng, i18n]);
 
+  // Reset clicked state after 3 seconds
+  useEffect(() => {
+    if (isClicked) {
+      const timer = setTimeout(() => {
+        setIsClicked(false);
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [isClicked]);
+
   const handleChangeLanguage = (next: "en" | "kh") => {
     setLng(next); // triggers re-render + effect above runs
   };
 
   const { colorMode, toggleColorMode } = useColorMode();
 
+  // Only apply click behavior on mobile/md, not on lg
+  const isMobileOrMd = useBreakpointValue({ base: true, md: true, lg: false });
+
   return (
     <Flex direction="column" gap="1rem">
       <Flex alignItems="center" gap={{ base: "1rem", lg: "1.75rem" }}>
+        {/* Profile */}
         {/* Profile */}
         <Box
           width={{ base: "100px", md: "150px", lg: "150px" }}
@@ -37,8 +56,32 @@ const HeaderSection = () => {
           border="1px solid"
           borderColor="borderColor"
           overflow="hidden"
+          // Desktop Hover handlers
+          onMouseEnter={() => !isMobileOrMd && setIsHovered(true)}
+          onMouseLeave={() => !isMobileOrMd && setIsHovered(false)}
+          // Mobile Click handler
+          onClick={() => {
+            if (isMobileOrMd) {
+              setIsClicked(true);
+            }
+          }}
+          cursor="pointer"
+          // Optional: Visual feedback while pressing
+          _active={{ opacity: 0.8 }}
         >
-          <Image src={Logo} alt="Handsome Boy!" loading="lazy" width="100%" height="100%" />
+          <Image
+            src={
+              // If we are actively in a 'clicked' state (timer running)
+              // OR we are hovering on desktop...
+              isClicked || isHovered ? (colorMode === "dark" ? ProfileAwake : ProfileSmile) : colorMode === "dark" ? ProfileSleep : Profile
+            }
+            alt="Handsome Boy!"
+            loading="lazy"
+            width="100%"
+            height="100%"
+            objectFit="cover"
+            transition="all 0.3s ease-in-out"
+          />
         </Box>
         {/* Info */}
         <Flex direction="column" justifyContent="space-between" width="100%">
