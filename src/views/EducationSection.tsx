@@ -5,7 +5,7 @@ import { ContainerHoverStyle } from "@/constants/style";
 // Icon
 import { LuGraduationCap } from "react-icons/lu";
 // Component
-import TimelineComponent from "@/components/views/TimelineComponent";
+import TimelineComponent from "@/components/common/TimelineComponent";
 // Data
 import { EducationData } from "@/constants/data/EducationData";
 

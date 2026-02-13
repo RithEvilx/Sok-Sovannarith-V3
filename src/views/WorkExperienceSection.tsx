@@ -5,7 +5,7 @@ import { ContainerHoverStyle } from "@/constants/style";
 // Icon
 import { LuBriefcaseBusiness } from "react-icons/lu";
 // Component
-import TimelineComponent from "@/components/views/TimelineComponent";
+import TimelineComponent from "@/components/common/TimelineComponent";
 // Data
 import { WorkExperienceData } from "@/constants/data/WorkExperienceData";
 
