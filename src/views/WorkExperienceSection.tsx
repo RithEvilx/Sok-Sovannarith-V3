@@ -7,6 +7,8 @@ import { ContainerHoverStyle } from "@/constants/style";
 import { LuBriefcaseBusiness } from "react-icons/lu";
 // Component
 import TimelineComponent from "@/components/views/TimelineComponent";
+// Data
+import { WorkExperienceData } from "@/constants/data/WorkExperienceData";
 
 const WorkExperienceSection = () => {
   const { t } = useTranslation();
@@ -23,7 +25,7 @@ const WorkExperienceSection = () => {
           {t("Work Experience")}
         </Text>
       </Flex>
-      <TimelineComponent />
+      <TimelineComponent data={WorkExperienceData} />
     </Flex>
   );
 };

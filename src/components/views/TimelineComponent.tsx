@@ -1,33 +1,39 @@
 import { useState } from "react";
 import { useColorMode } from "../ui/color-mode";
 import { Flex, List, Separator, Text, Timeline } from "@chakra-ui/react";
-// Data
-import { WorkExperienceData } from "@/constants/data/WorkExperienceData";
 import { useTranslation } from "react-i18next";
 
-const TimelineComponent = () => {
+// Define a generic interface for the data structure
+interface TimelineItemData {
+  title: string;
+  role: string;
+  date: string;
+  description?: string[]; // Made optional for Education
+}
+
+interface TimelineComponentProps {
+  data: TimelineItemData[];
+}
+
+const TimelineComponent = ({ data }: TimelineComponentProps) => {
   const { t } = useTranslation();
   const { colorMode } = useColorMode();
   const [activeIndex, setActiveIndex] = useState<number | null>(0);
 
   return (
-    <Timeline.Root variant="outline" size="sm">
-      {WorkExperienceData.map((item, index) => {
+    <Timeline.Root variant="outline" size="sm" width="full">
+      {data.map((item, index) => {
         const isSelected = activeIndex === index;
-
-        // Dynamic Colors based on Mode
         const activeBg = colorMode === "dark" ? "lightBg" : "darkBg";
         const inactiveBg = colorMode === "dark" ? "darkBg" : "lightBg";
 
         return (
-          <Timeline.Item key={index} alignItems="center" onClick={() => setActiveIndex(index)} cursor="pointer">
+          <Timeline.Item key={index} onClick={() => setActiveIndex(index)} cursor="pointer">
             <Timeline.Connector>
               <Timeline.Separator />
               <Timeline.Indicator
                 cursor="pointer"
-                // Conditional Background
                 bg={isSelected ? activeBg : inactiveBg}
-                // Conditional Border
                 border="1px solid"
                 borderColor={isSelected ? activeBg : "borderColor"}
                 transition="all 0.2s ease-in-out"
@@ -47,24 +53,27 @@ const TimelineComponent = () => {
             >
               <Timeline.Title>
                 <Text fontWeight="semibold" fontSize="md">
-                  {t(item.role)}
+                  {(item.description?.length ?? 0) > 0 ? t(item.role) : item.title}
                 </Text>
               </Timeline.Title>
               <Timeline.Description fontWeight="medium" color={isSelected ? (colorMode === "dark" ? "white" : "black") : "secondaryTextColor"}>
                 <Flex alignItems="center" flexWrap="wrap" gap="0.25rem">
-                  <Text>{t(item.title)}</Text>
-                  {item.date && <Separator orientation="vertical" height="3" variant="solid" size="md" colorPalette="gray.800" />}
+                  <Text>{(item.description?.length ?? 0) > 0 ? t(item.title) : item.role}</Text>
+                  {item.date && <Separator orientation="vertical" height="3" variant="solid" colorPalette="gray.800" />}
                   <Text>{t(item.date)}</Text>
                 </Flex>
               </Timeline.Description>
 
-              <List.Root listStylePosition="inside" marginTop="0.25rem" gap="0.15rem">
-                {item.description.map((description, idx) => (
-                  <List.Item fontSize="sm" key={idx} color={colorMode === "dark" ? "secondaryTextColorForDark" : "darkText"}>
-                    {t(description)}
-                  </List.Item>
-                ))}
-              </List.Root>
+              {/* Only render List if description exists and has items */}
+              {item.description && item.description.length > 0 && (
+                <List.Root listStylePosition="inside" marginTop="0.25rem" gap="0.15rem">
+                  {item.description.map((desc, idx) => (
+                    <List.Item fontSize="sm" key={idx} color={colorMode === "dark" ? "secondaryTextColorForDark" : "darkText"}>
+                      {t(desc)}
+                    </List.Item>
+                  ))}
+                </List.Root>
+              )}
             </Timeline.Content>
           </Timeline.Item>
         );

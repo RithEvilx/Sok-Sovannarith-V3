@@ -3,7 +3,12 @@ import { useColorMode } from "@/components/ui/color-mode";
 import { Box, Flex, Text } from "@chakra-ui/react";
 // Style
 import { ContainerHoverStyle } from "@/constants/style";
+// Icon
 import { LuGraduationCap } from "react-icons/lu";
+// Component
+import TimelineComponent from "@/components/views/TimelineComponent";
+// Data
+import { EducationData } from "@/constants/data/EducationData";
 
 const EducationSection = () => {
   const { t } = useTranslation();
@@ -20,6 +25,7 @@ const EducationSection = () => {
           {t("Education")}
         </Text>
       </Flex>
+      <TimelineComponent data={EducationData} />
     </Flex>
   );
 };
