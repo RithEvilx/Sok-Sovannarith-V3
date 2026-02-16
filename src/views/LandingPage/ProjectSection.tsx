@@ -1,15 +1,19 @@
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
-import { Box, Flex, Text } from "@chakra-ui/react";
+import { Link, useNavigate } from "react-router-dom";
+import { Box, Flex, GridItem, Heading, Image, Link as ChakraLink, SimpleGrid, Text } from "@chakra-ui/react";
 // Style
 import { ContainerHoverStyle, useColorModeTheme } from "@/constants/style";
 // Icon
-import { LuChevronRight, LuFolderCode } from "react-icons/lu";
+import { LuChevronRight, LuFolderCode, LuGithub, LuScanEye } from "react-icons/lu";
+// Data
+import { ProjectData } from "@/constants/data/ProjectData";
+// Util
+import { slugConvertor } from "@/utils/slugConvertor";
 
 const ProjectSection = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const { textMutedColorMode } = useColorModeTheme();
+  const { textMutedColorMode, borderColorMode, bgColorMode, textColorMode, focusColorMode } = useColorModeTheme();
 
   return (
     <Flex {...ContainerHoverStyle}>
@@ -20,7 +24,7 @@ const ProjectSection = () => {
             <LuFolderCode />
           </Box>
           <Text fontWeight="semibold" fontSize={{ base: "lg", lg: "xl" }}>
-            {t("Project")}
+            {t("Projects")}
           </Text>
         </Flex>
         <Flex
@@ -31,6 +35,7 @@ const ProjectSection = () => {
           className="group"
           cursor="pointer"
           onClick={() => navigate("/projects")}
+          _focusVisible={{ outline: "2px solid", outlineColor: focusColorMode, rounded: "sm" }}
         >
           <Text>{t("View All")}</Text>
           <Box _groupHover={{ transform: "translateX(3px)" }} _groupActive={{ transform: "translateX(3px)" }} transition="all 0.15s">
@@ -38,7 +43,90 @@ const ProjectSection = () => {
           </Box>
         </Flex>
       </Flex>
-      <Flex></Flex>
+      {/* Project List */}
+      <SimpleGrid columns={12} gap="1rem">
+        {ProjectData.slice(0, 4).map((project, index) => (
+          <GridItem key={index} colSpan={{ base: 12, lg: 6 }}>
+            <Link to={`/projects/${slugConvertor(project.name)}`}>
+              <Flex {...ContainerHoverStyle} gap="0.5rem" padding="0.5rem" height="300px">
+                <Box width="100%" height="55%" border="1px solid" borderColor={borderColorMode} rounded="md" overflow="hidden">
+                  <Image src={project.image} alt={project.name} width="100%" height="100%" objectFit="cover" aspectRatio={16 / 9} />
+                </Box>
+                {/* Content */}
+                <Flex direction="column" justifyContent="space-between" gap="0.25rem" minHeight="45%">
+                  <Flex direction="column" gap="0.15rem">
+                    <Heading size="md" width="100%" lineClamp={1}>
+                      {project.name}
+                    </Heading>
+                    <Text color="secondaryTextColor" lineClamp={3} fontSize="xs">
+                      {project.description}
+                    </Text>
+                  </Flex>
+                  {/* Actions  */}
+                  <Flex gap="0.35rem">
+                    {project?.demo && (
+                      <ChakraLink
+                        href={project.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                        }}
+                        _focusVisible={{ outline: "2px solid", outlineColor: focusColorMode, rounded: "sm" }}
+                      >
+                        <Flex
+                          alignItems="center"
+                          fontSize="sm"
+                          gap="0.25rem"
+                          rounded="sm"
+                          padding="0 0.5rem"
+                          border="1px solid"
+                          borderColor={borderColorMode}
+                          cursor="pointer"
+                          _hover={{ bgColor: bgColorMode, color: textColorMode, transform: "translateY(-3px)" }}
+                          _active={{ bgColor: bgColorMode, color: textColorMode, transform: "translateY(-3px)" }}
+                          transition="all 0.15s"
+                        >
+                          <LuScanEye />
+                          {t("Demo")}
+                        </Flex>
+                      </ChakraLink>
+                    )}
+                    {project?.github && (
+                      <ChakraLink
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                        }}
+                        _focusVisible={{ outline: "2px solid", outlineColor: focusColorMode, rounded: "sm" }}
+                      >
+                        <Flex
+                          alignItems="center"
+                          fontSize="sm"
+                          gap="0.25rem"
+                          rounded="sm"
+                          padding="0 0.5rem"
+                          border="1px solid"
+                          borderColor={borderColorMode}
+                          cursor="pointer"
+                          _hover={{ bgColor: bgColorMode, color: textColorMode, transform: "translateY(-3px)" }}
+                          _active={{ bgColor: bgColorMode, color: textColorMode, transform: "translateY(-3px)" }}
+                          transition="all 0.15s"
+                        >
+                          <LuGithub />
+                          {t("RithEvilx")}
+                        </Flex>
+                      </ChakraLink>
+                    )}
+                  </Flex>
+                </Flex>
+              </Flex>
+            </Link>
+          </GridItem>
+        ))}
+      </SimpleGrid>
     </Flex>
   );
 };

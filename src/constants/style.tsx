@@ -26,6 +26,7 @@ export const useColorModeTheme = () => {
   const textColorMode = colorMode === "dark" ? "textForDark" : "textForLight";
   const textMutedColorMode = colorMode === "dark" ? "textMutedForDark" : "textMutedForLight";
   const borderColorMode = colorMode === "dark" ? "borderColorForDark" : "borderColorForLight";
+  const focusColorMode = colorMode === "dark" ? "#ffffff" : "#000000";
 
-  return { bgColorMode, textColorMode, borderColorMode, textMutedColorMode } as const;
+  return { bgColorMode, textColorMode, borderColorMode, textMutedColorMode, focusColorMode } as const;
 };

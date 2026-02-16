@@ -10,7 +10,7 @@ import { TechStackData } from "@/constants/data/TechStackData";
 const TechStackSection = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const { textMutedColorMode } = useColorModeTheme();
+  const { textMutedColorMode, focusColorMode } = useColorModeTheme();
 
   return (
     <Flex {...ContainerHoverStyle}>
@@ -32,6 +32,7 @@ const TechStackSection = () => {
           className="group"
           cursor="pointer"
           onClick={() => navigate("/tech-stacks")}
+          _focusVisible={{ outline: "2px solid", outlineColor: focusColorMode, rounded: "sm" }}
         >
           <Text>{t("View All")}</Text>
           <Box _groupHover={{ transform: "translateX(3px)" }} _groupActive={{ transform: "translateX(3px)" }} transition="all 0.15s">
@@ -39,7 +40,7 @@ const TechStackSection = () => {
           </Box>
         </Flex>
       </Flex>
-      {/* Content */}
+      {/* Tech Stack List */}
       {TechStackData.map((tech, index) => (
         <Flex key={index} direction="column" gap="0.5rem">
           <Heading size="md">{tech.category}</Heading>

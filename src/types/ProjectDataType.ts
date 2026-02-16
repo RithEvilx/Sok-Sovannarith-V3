@@ -1,4 +1,5 @@
 export type ProjectDataType = {
+  id: number;
   image: string;
   name: string;
   description: string;

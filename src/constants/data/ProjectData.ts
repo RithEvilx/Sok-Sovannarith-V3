@@ -1,14 +1,16 @@
 import type { ProjectDataType } from "@/types/ProjectDataType";
+import { RomdoulKravanhResortImg } from "../app";
 
 export const ProjectData: ProjectDataType[] = [
+  // Romdoul Kravanh Resort
   {
-    image: "",
-    name: "Romdoul Kravanh Resort Booking System",
+    id: 1,
+    image: RomdoulKravanhResortImg,
+    name: "Romdoul Kravanh Resort",
     description:
       "A specialized booking platform developed to automate guest reservations for a resort client. I conceptualized the UI and built the frontend to integrate seamlessly with the client's existing internal management system. By implementing a real-time API sync and ABA Bank payments, I transformed a manual administrative task into an automated, user-friendly digital experience that increased operational efficiency and customer accessibility.",
     stack: ["React", "TypeScript", "Chakra UI", "Tanstack Query"],
-    github: "",
-    demo: "",
+    demo: "https://www.romdoul-kravanh.com",
     story:
       "I developed a custom, high-sync booking interface for a resort client already utilizing a private SBU management system. The primary challenge was bridging the gap between a manual check-in process and a digital-first customer experience. By architecting a modern frontend that communicates directly with the client's internal backend, I successfully automated the entire booking pipeline, eliminating the need for manual data entry by resort staff.",
     keyContributions: [
