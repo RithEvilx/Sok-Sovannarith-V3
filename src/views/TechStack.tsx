@@ -5,7 +5,8 @@ import { Badge, Box, Flex, GridItem, Heading, Presence, SimpleGrid, Text, useDis
 // Style
 import { ContainerHoverStyle } from "@/constants/style";
 // Icon
-import { LuArrowLeft, LuLaptop } from "react-icons/lu";
+import { LuArrowLeft, LuLaptop, LuPencilRuler, LuServer, LuWrench } from "react-icons/lu";
+import { TechStackData } from "@/constants/data/TechStackData";
 
 const TechStack = () => {
   const { t } = useTranslation();
@@ -40,32 +41,43 @@ const TechStack = () => {
         <Text color="secondaryTextColor">{t("Comprehensive list of tools and technologies I use.")}</Text>
       </Flex>
       {/* List Item */}
-      <SimpleGrid columns={12} gap="1rem">
-        {Array.from({ length: 6 }).map((_, idx) => (
-          <GridItem key={idx} colSpan={{ base: 12, md: 6 }}>
+      <SimpleGrid columns={12} gap="1rem" alignItems="stretch">
+        {TechStackData.map((tech, index) => (
+          <GridItem key={index} colSpan={{ base: 12, md: 6 }}>
             <Presence
               present={open}
               animationName={{
                 _open: "slide-from-bottom, fade-in",
                 _closed: "slide-to-bottom, fade-out",
               }}
-              animationDuration={`${(idx + 0.5) * 500}ms`}
+              animationDuration={`${(index + 0.5) * 500}ms`}
+              height="full"
             >
-              <Flex {...ContainerHoverStyle} _hover={{ transform: "translateY(-3px)" }} _active={{ transform: "translateY(-3px)" }}>
+              <Flex {...ContainerHoverStyle} _hover={{ boxShadow: "none" }} _active={{ boxShadow: "none" }} height="full">
                 {/* Header */}
                 <Flex alignItems="center" gap="0.5rem">
                   <Box fontSize="1.25rem">
-                    <LuLaptop />
+                    {tech.category === "Frontend" ? (
+                      <LuLaptop />
+                    ) : tech.category === "Backend & Database" ? (
+                      <LuServer />
+                    ) : tech.category === "Tools & Libraries" ? (
+                      <LuWrench />
+                    ) : (
+                      <LuPencilRuler />
+                    )}
                   </Box>
                   <Text fontWeight="semibold" fontSize={{ base: "lg", lg: "xl" }}>
-                    {t("Frontend")}
+                    {tech.category}
                   </Text>
                 </Flex>
                 {/* Skill List */}
-                <Flex gap="0.5rem" flexWrap="wrap">
-                  <Badge variant="outline" padding="0.25rem 0.5rem">
-                    1
-                  </Badge>
+                <Flex flexWrap="wrap" gap="0.35rem">
+                  {tech.skills.map((skill, idx) => (
+                    <Badge variant="outline" key={idx} padding="0.25rem 0.5rem">
+                      {skill}
+                    </Badge>
+                  ))}
                 </Flex>
               </Flex>
             </Presence>

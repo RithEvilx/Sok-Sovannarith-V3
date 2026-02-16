@@ -23,7 +23,15 @@ const ProjectSection = () => {
             {t("Project")}
           </Text>
         </Flex>
-        <Flex alignItems="center" color={textMutedColorMode} fontSize="sm" className="group" cursor="pointer" onClick={() => navigate("/projects")}>
+        <Flex
+          as="button"
+          alignItems="center"
+          color={textMutedColorMode}
+          fontSize="sm"
+          className="group"
+          cursor="pointer"
+          onClick={() => navigate("/projects")}
+        >
           <Text>{t("View All")}</Text>
           <Box _groupHover={{ transform: "translateX(3px)" }} _groupActive={{ transform: "translateX(3px)" }} transition="all 0.15s">
             <LuChevronRight />

@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 
 const PublicLayout = () => {
   return (
-    <Box padding={{ base: "1rem", lg: "2rem 15%" }}>
+    <Box padding={{ base: "1rem", lg: "2rem 20%" }}>
       <Outlet />
     </Box>
   );

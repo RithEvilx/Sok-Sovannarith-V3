@@ -1,10 +1,11 @@
 import { useTranslation } from "react-i18next";
-import { Box, Flex, Text } from "@chakra-ui/react";
+import { Badge, Box, Flex, Heading, Text } from "@chakra-ui/react";
 // Style
 import { ContainerHoverStyle, useColorModeTheme } from "@/constants/style";
 // Icon
 import { LuChevronRight, LuSettings } from "react-icons/lu";
 import { useNavigate } from "react-router-dom";
+import { TechStackData } from "@/constants/data/TechStackData";
 
 const TechStackSection = () => {
   const { t } = useTranslation();
@@ -23,14 +24,35 @@ const TechStackSection = () => {
             {t("Tech Stack")}
           </Text>
         </Flex>
-        <Flex alignItems="center" color={textMutedColorMode} fontSize="sm" className="group" cursor="pointer" onClick={() => navigate("/tech-stacks")}>
+        <Flex
+          as="button"
+          alignItems="center"
+          color={textMutedColorMode}
+          fontSize="sm"
+          className="group"
+          cursor="pointer"
+          onClick={() => navigate("/tech-stacks")}
+        >
           <Text>{t("View All")}</Text>
           <Box _groupHover={{ transform: "translateX(3px)" }} _groupActive={{ transform: "translateX(3px)" }} transition="all 0.15s">
             <LuChevronRight />
           </Box>
         </Flex>
       </Flex>
-      <Flex></Flex>
+      {/* Content */}
+      {TechStackData.map((tech, index) => (
+        <Flex key={index} direction="column" gap="0.5rem">
+          <Heading size="md">{tech.category}</Heading>
+          {/* Skill List */}
+          <Flex flexWrap="wrap" gap="0.35rem">
+            {tech.skills.map((skill, idx) => (
+              <Badge variant="outline" key={idx} padding="0.25rem 0.5rem">
+                {skill}
+              </Badge>
+            ))}
+          </Flex>
+        </Flex>
+      ))}
     </Flex>
   );
 };
