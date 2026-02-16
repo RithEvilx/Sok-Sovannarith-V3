@@ -1,17 +1,18 @@
 import { useEffect } from "react";
 import { Flex, GridItem, Presence, SimpleGrid, useDisclosure } from "@chakra-ui/react";
 // Component
-// Rigth
+// Right
 import HeaderSection from "./HeaderSection";
+import LocalTimeSection from "./LocalTimeSection";
 import AboutUsSection from "./AboutMeSection";
 import EducationSection from "./EducationSection";
 import TechStackSection from "./TechStackSection";
+import BeyondScreenSection from "./BeyondScreenSection";
 // Left
 import WorkExperienceSection from "./WorkExperienceSection";
 import ProjectSection from "./ProjectSection";
 // Bottom
 import Footer from "./Footer";
-import LocalTimeSection from "./LocalTimeSection";
 
 const Home = () => {
   const { open, onOpen } = useDisclosure();
@@ -84,6 +85,16 @@ const Home = () => {
               animationDuration="1000ms"
             >
               <TechStackSection />
+            </Presence>
+            {/* Beyond the screen */}
+            <Presence
+              lazyMount
+              unmountOnExit
+              present={open}
+              animationStyle={{ _open: "scale-fade-in", _closed: "scale-fade-out" }}
+              animationDuration="1000ms"
+            >
+              <BeyondScreenSection />
             </Presence>
           </Flex>
         </GridItem>
