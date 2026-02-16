@@ -51,11 +51,10 @@ const BeyondScreenSection = () => {
       </Flex>
 
       {/* Content */}
-      <Flex direction="column" gap="1.5rem">
+      <Flex direction="column" gap={{ base: "1.5rem", lg: "2.5rem" }}>
         <Text color={textColorMode} fontSize="sm">
           {BeyondScreenData.description}
         </Text>
-
         {/* 4. Scrollable Gallery */}
         <Flex
           ref={scrollRef}

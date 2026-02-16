@@ -13,6 +13,7 @@ import WorkExperienceSection from "./WorkExperienceSection";
 import ProjectSection from "./ProjectSection";
 // Bottom
 import Footer from "./Footer";
+import GetInTouchSection from "./GetInTouchSection";
 
 const Home = () => {
   const { open, onOpen } = useDisclosure();
@@ -119,6 +120,16 @@ const Home = () => {
               animationDuration="1000ms"
             >
               <ProjectSection />
+            </Presence>
+            {/* Get In Touch */}
+            <Presence
+              lazyMount
+              unmountOnExit
+              present={open}
+              animationStyle={{ _open: "scale-fade-in", _closed: "scale-fade-out" }}
+              animationDuration="1000ms"
+            >
+              <GetInTouchSection />
             </Presence>
           </Flex>
         </GridItem>
