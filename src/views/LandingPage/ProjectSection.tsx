@@ -57,7 +57,7 @@ const ProjectSection = () => {
                 borderColor={borderColorMode}
                 rounded="md"
                 overflow="hidden"
-                onClick={() => navigate(`/projects/${slugConvertor(project.name)}`)}
+                onClick={() => navigate(`/projects/detail?name=${slugConvertor(project.name)}`)}
                 _focusVisible={{ outline: "2px solid", outlineColor: focusColorMode, rounded: "sm" }}
               >
                 <Image
@@ -75,7 +75,12 @@ const ProjectSection = () => {
               </Box>
               {/* Content */}
               <Flex direction="column" justifyContent="space-between" gap="0.25rem" minHeight="45%">
-                <Flex direction="column" gap="0.15rem" onClick={() => navigate(`/projects/${slugConvertor(project.name)}`)} cursor="pointer">
+                <Flex
+                  direction="column"
+                  gap="0.15rem"
+                  onClick={() => navigate(`/projects/detail?name=${slugConvertor(project.name)}`)}
+                  cursor="pointer"
+                >
                   <Heading size="md" width="100%" lineClamp={1}>
                     {project.name}
                   </Heading>

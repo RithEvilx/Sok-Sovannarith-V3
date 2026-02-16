@@ -37,7 +37,7 @@ const App = () => {
         </Float>
       )}
       {isProjectDate && (
-        <Float top="20px" right="60px" zIndex={99999}>
+        <Float top="20px" right="110px" zIndex={99999}>
           Created Date: 12 Feb 2026
         </Float>
       )}
