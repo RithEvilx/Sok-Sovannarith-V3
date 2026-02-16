@@ -9,6 +9,8 @@ import TechStackSection from "./TechStackSection";
 // Left
 import WorkExperienceSection from "./WorkExperienceSection";
 import ProjectSection from "./ProjectSection";
+// Bottom
+import Footer from "./Footer";
 
 const Home = () => {
   const { open, onOpen } = useDisclosure();
@@ -97,6 +99,18 @@ const Home = () => {
               <ProjectSection />
             </Presence>
           </Flex>
+        </GridItem>
+        <GridItem colSpan={12}>
+          {/* Footer */}
+          <Presence
+            lazyMount
+            unmountOnExit
+            present={open}
+            animationStyle={{ _open: "scale-fade-in", _closed: "scale-fade-out" }}
+            animationDuration="1000ms"
+          >
+            <Footer />
+          </Presence>
         </GridItem>
       </SimpleGrid>
     </>

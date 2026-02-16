@@ -2,9 +2,8 @@ import { lazy, Suspense } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 // Layout
 import PublicLayout from "./layout/PublicLayout";
-// Components
+// Component
 import Loading from "./components/common/Loading/Loading";
-import Footer from "./views/LandingPage/Footer";
 // Routes
 const Home = lazy(() => import("./views/LandingPage/index"));
 const Resume = lazy(() => import("./views/Resume"));
@@ -26,7 +25,6 @@ const Router = () => {
             <Route path="*" element={<Navigate to="/" replace />} />
           </Route>
         </Routes>
-        <Footer />
       </Suspense>
     </BrowserRouter>
   );
