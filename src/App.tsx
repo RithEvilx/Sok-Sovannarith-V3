@@ -11,6 +11,7 @@ import ScrollToTopButton from "./components/common/ScrollToTopButton";
 
 const App = () => {
   const [isDebug] = useState<boolean>(() => localStorage.getItem("debug") === "true");
+  const [isProjectDate] = useState<boolean>(() => localStorage.getItem("projectDate") === "true");
 
   useEffect(() => {
     const setDefault = (key: string, value: string) => {
@@ -19,6 +20,7 @@ const App = () => {
 
     setDefault("language", "en");
     setDefault("debug", "false");
+    setDefault("projectDate", "false");
 
     const lng = localStorage.getItem("language") || "en";
     changeLanguage(lng);
@@ -32,6 +34,11 @@ const App = () => {
       {isDebug && (
         <Float top="20px" right="60px" zIndex={99999}>
           Version {version}
+        </Float>
+      )}
+      {isProjectDate && (
+        <Float top="20px" right="60px" zIndex={99999}>
+          Created Date: 12 Feb 2026
         </Float>
       )}
     </Provider>
