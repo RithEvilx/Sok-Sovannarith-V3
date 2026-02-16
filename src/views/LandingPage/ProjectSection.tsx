@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
-import { Link, useNavigate } from "react-router-dom";
-import { Box, Flex, GridItem, Heading, Image, Link as ChakraLink, SimpleGrid, Text } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
+import { Box, Flex, GridItem, Heading, Image, Link, SimpleGrid, Text } from "@chakra-ui/react";
 // Style
 import { ContainerHoverStyle, useColorModeTheme } from "@/constants/style";
 // Icon
@@ -47,83 +47,103 @@ const ProjectSection = () => {
       <SimpleGrid columns={12} gap="1rem">
         {ProjectData.slice(0, 4).map((project, index) => (
           <GridItem key={index} colSpan={{ base: 12, md: 6 }}>
-            <Link to={`/projects/${slugConvertor(project.name)}`}>
-              <Flex {...ContainerHoverStyle} gap="0.5rem" padding="0.5rem" height="300px">
-                <Box width="100%" height="55%" border="1px solid" borderColor={borderColorMode} rounded="md" overflow="hidden">
-                  <Image src={project.image} alt={project.name} width="100%" height="100%" objectFit="cover" aspectRatio={16 / 9} />
-                </Box>
-                {/* Content */}
-                <Flex direction="column" justifyContent="space-between" gap="0.25rem" minHeight="45%">
-                  <Flex direction="column" gap="0.15rem">
-                    <Heading size="md" width="100%" lineClamp={1}>
-                      {project.name}
-                    </Heading>
-                    <Text color="secondaryTextColor" lineClamp={3} fontSize="xs">
-                      {project.description}
-                    </Text>
-                  </Flex>
-                  {/* Actions  */}
-                  <Flex gap="0.35rem">
-                    {project?.demo && (
-                      <ChakraLink
-                        href={project.demo}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                        }}
-                        _focusVisible={{ outline: "2px solid", outlineColor: focusColorMode, rounded: "sm" }}
+            <Flex {...ContainerHoverStyle} gap="0.5rem" padding="0.5rem" height="300px">
+              {/* Image */}
+              <Box
+                as="button"
+                width="100%"
+                minHeight="50%"
+                border="1px solid"
+                borderColor={borderColorMode}
+                rounded="md"
+                overflow="hidden"
+                onClick={() => navigate(`/projects/${slugConvertor(project.name)}`)}
+                _focusVisible={{ outline: "2px solid", outlineColor: focusColorMode, rounded: "sm" }}
+              >
+                <Image
+                  src={project.image}
+                  alt={project.name}
+                  width="100%"
+                  height="100%"
+                  objectFit="cover"
+                  aspectRatio={16 / 9}
+                  _hover={{ scale: 1.05 }}
+                  _active={{ scale: 1.05 }}
+                  transition="all 0.15s"
+                  cursor="pointer"
+                />
+              </Box>
+              {/* Content */}
+              <Flex direction="column" justifyContent="space-between" gap="0.25rem" minHeight="45%">
+                <Flex direction="column" gap="0.15rem" onClick={() => navigate(`/projects/${slugConvertor(project.name)}`)} cursor="pointer">
+                  <Heading size="md" width="100%" lineClamp={1}>
+                    {project.name}
+                  </Heading>
+                  <Text color="secondaryTextColor" lineClamp={3} fontSize="xs">
+                    {project.description}
+                  </Text>
+                </Flex>
+                {/* Actions  */}
+                <Flex gap="0.35rem">
+                  {project?.demo && (
+                    <Link
+                      href={project.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                      }}
+                      _focusVisible={{ outline: "2px solid", outlineColor: focusColorMode, rounded: "sm" }}
+                    >
+                      <Flex
+                        alignItems="center"
+                        fontSize="sm"
+                        gap="0.25rem"
+                        rounded="sm"
+                        padding="0 0.5rem"
+                        border="1px solid"
+                        borderColor={borderColorMode}
+                        cursor="pointer"
+                        _hover={{ bgColor: bgColorMode, color: textColorMode, transform: "translateY(-3px)" }}
+                        _active={{ bgColor: bgColorMode, color: textColorMode, transform: "translateY(-3px)" }}
+                        transition="all 0.15s"
                       >
-                        <Flex
-                          alignItems="center"
-                          fontSize="sm"
-                          gap="0.25rem"
-                          rounded="sm"
-                          padding="0 0.5rem"
-                          border="1px solid"
-                          borderColor={borderColorMode}
-                          cursor="pointer"
-                          _hover={{ bgColor: bgColorMode, color: textColorMode, transform: "translateY(-3px)" }}
-                          _active={{ bgColor: bgColorMode, color: textColorMode, transform: "translateY(-3px)" }}
-                          transition="all 0.15s"
-                        >
-                          <LuScanEye />
-                          {t("Live Demo")}
-                        </Flex>
-                      </ChakraLink>
-                    )}
-                    {project?.github && (
-                      <ChakraLink
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                        }}
-                        _focusVisible={{ outline: "2px solid", outlineColor: focusColorMode, rounded: "sm" }}
+                        <LuScanEye />
+                        {t("Live Demo")}
+                      </Flex>
+                    </Link>
+                  )}
+                  {project?.github && (
+                    <Link
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                      }}
+                      _focusVisible={{ outline: "2px solid", outlineColor: focusColorMode, rounded: "sm" }}
+                    >
+                      <Flex
+                        alignItems="center"
+                        fontSize="sm"
+                        gap="0.25rem"
+                        rounded="sm"
+                        padding="0 0.5rem"
+                        border="1px solid"
+                        borderColor={borderColorMode}
+                        cursor="pointer"
+                        _hover={{ bgColor: bgColorMode, color: textColorMode, transform: "translateY(-3px)" }}
+                        _active={{ bgColor: bgColorMode, color: textColorMode, transform: "translateY(-3px)" }}
+                        transition="all 0.15s"
                       >
-                        <Flex
-                          alignItems="center"
-                          fontSize="sm"
-                          gap="0.25rem"
-                          rounded="sm"
-                          padding="0 0.5rem"
-                          border="1px solid"
-                          borderColor={borderColorMode}
-                          cursor="pointer"
-                          _hover={{ bgColor: bgColorMode, color: textColorMode, transform: "translateY(-3px)" }}
-                          _active={{ bgColor: bgColorMode, color: textColorMode, transform: "translateY(-3px)" }}
-                          transition="all 0.15s"
-                        >
-                          <LuGithub />
-                          {t("RithEvilx")}
-                        </Flex>
-                      </ChakraLink>
-                    )}
-                  </Flex>
+                        <LuGithub />
+                        {t("RithEvilx")}
+                      </Flex>
+                    </Link>
+                  )}
                 </Flex>
               </Flex>
-            </Link>
+            </Flex>
           </GridItem>
         ))}
       </SimpleGrid>
