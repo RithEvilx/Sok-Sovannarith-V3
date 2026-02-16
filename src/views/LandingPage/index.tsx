@@ -11,6 +11,7 @@ import WorkExperienceSection from "./WorkExperienceSection";
 import ProjectSection from "./ProjectSection";
 // Bottom
 import Footer from "./Footer";
+import LocalTimeSection from "./LocalTimeSection";
 
 const Home = () => {
   const { open, onOpen } = useDisclosure();
@@ -44,6 +45,16 @@ const Home = () => {
         </GridItem>
         <GridItem colSpan={{ base: 12, lg: 5 }}>
           <Flex direction="column" gap="1rem">
+            {/* Local Time */}
+            <Presence
+              lazyMount
+              unmountOnExit
+              present={open}
+              animationStyle={{ _open: "scale-fade-in", _closed: "scale-fade-out" }}
+              animationDuration="1000ms"
+            >
+              <LocalTimeSection />
+            </Presence>
             {/* About Me */}
             <Presence
               lazyMount
