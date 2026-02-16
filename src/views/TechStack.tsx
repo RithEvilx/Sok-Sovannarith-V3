@@ -68,7 +68,7 @@ const TechStack = () => {
                     )}
                   </Box>
                   <Text fontWeight="semibold" fontSize={{ base: "lg", lg: "xl" }}>
-                    {tech.category}
+                    {t(tech.category)}
                   </Text>
                 </Flex>
                 {/* Skill List */}

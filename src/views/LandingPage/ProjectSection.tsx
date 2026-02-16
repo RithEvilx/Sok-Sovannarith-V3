@@ -46,7 +46,7 @@ const ProjectSection = () => {
       {/* Project List */}
       <SimpleGrid columns={12} gap="1rem">
         {ProjectData.slice(0, 4).map((project, index) => (
-          <GridItem key={index} colSpan={{ base: 12, lg: 6 }}>
+          <GridItem key={index} colSpan={{ base: 12, md: 6 }}>
             <Link to={`/projects/${slugConvertor(project.name)}`}>
               <Flex {...ContainerHoverStyle} gap="0.5rem" padding="0.5rem" height="300px">
                 <Box width="100%" height="55%" border="1px solid" borderColor={borderColorMode} rounded="md" overflow="hidden">
@@ -88,7 +88,7 @@ const ProjectSection = () => {
                           transition="all 0.15s"
                         >
                           <LuScanEye />
-                          {t("Demo")}
+                          {t("Live Demo")}
                         </Flex>
                       </ChakraLink>
                     )}

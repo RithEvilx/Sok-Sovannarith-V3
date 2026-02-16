@@ -54,7 +54,7 @@ const HeaderSection = () => {
   };
 
   return (
-    <Flex direction="column" gap="1rem">
+    <Flex direction="column" gap="1rem" marginBottom={{ base: "2rem", lg: "3rem" }}>
       <Flex alignItems="center" gap={{ base: "1rem", lg: "1.75rem" }}>
         {/* Profile */}
         <Box
@@ -83,7 +83,13 @@ const HeaderSection = () => {
             src={
               // If we are actively in a 'clicked' state (timer running)
               // OR we are hovering on desktop...
-              isClicked || isHovered ? (colorMode === "dark" ? ProfileImageAwake : ProfileImageSmile) : colorMode === "dark" ? ProfileImageSleep : ProfileImage
+              isClicked || isHovered
+                ? colorMode === "dark"
+                  ? ProfileImageAwake
+                  : ProfileImageSmile
+                : colorMode === "dark"
+                  ? ProfileImageSleep
+                  : ProfileImage
             }
             alt="Handsome Boy!"
             loading="lazy"
@@ -122,7 +128,15 @@ const HeaderSection = () => {
           {/* Actions Button - Table & Desktop */}
           <Flex gap="0.5rem" display={{ base: "none", md: "flex" }}>
             {/* Read Resume */}
-            <Button paddingInline="1rem" alignItems="center" variant="outline" _hover={{ bgColor: bgColorMode, color: textColorMode, transform: "translateY(-3px)" }} transition="all 0.3s" rounded="md" onClick={handleNavigateResume}>
+            <Button
+              paddingInline="1rem"
+              alignItems="center"
+              variant="outline"
+              _hover={{ bgColor: bgColorMode, color: textColorMode, transform: "translateY(-3px)" }}
+              transition="all 0.3s"
+              rounded="md"
+              onClick={handleNavigateResume}
+            >
               <LuFileSpreadsheet />
               <Text lineHeight={1} fontWeight="semibold">
                 {t("Read Resume")}
@@ -130,7 +144,14 @@ const HeaderSection = () => {
             </Button>
             {/* Send Email */}
             <a href={mailTo}>
-              <Button paddingInline="1rem" alignItems="center" variant="outline" _hover={{ bgColor: bgColorMode, color: textColorMode, transform: "translateY(-3px)" }} transition="all 0.3s" rounded="md">
+              <Button
+                paddingInline="1rem"
+                alignItems="center"
+                variant="outline"
+                _hover={{ bgColor: bgColorMode, color: textColorMode, transform: "translateY(-3px)" }}
+                transition="all 0.3s"
+                rounded="md"
+              >
                 <LuMail />
                 <Text lineHeight={1} fontWeight="semibold">
                   {t("Send Email")}
@@ -139,11 +160,27 @@ const HeaderSection = () => {
             </a>
             {/* Language Switcher */}
             <Group attached rounded="lg">
-              <Button variant="outline" fontWeight="semibold" onClick={() => handleChangeLanguage("kh")} bgColor={lng === "kh" ? bgColorMode : undefined} color={lng === "kh" ? textColorMode : undefined} _hover={{ transform: "translateY(-3px)" }} _active={{ transform: "translateY(-3px)" }}>
+              <Button
+                variant="outline"
+                fontWeight="semibold"
+                onClick={() => handleChangeLanguage("kh")}
+                bgColor={lng === "kh" ? bgColorMode : undefined}
+                color={lng === "kh" ? textColorMode : undefined}
+                _hover={{ transform: "translateY(-3px)" }}
+                _active={{ transform: "translateY(-3px)" }}
+              >
                 {t("KH")}
               </Button>
 
-              <Button variant="outline" fontWeight="semibold" onClick={() => handleChangeLanguage("en")} bgColor={lng === "en" ? bgColorMode : undefined} color={lng === "en" ? textColorMode : undefined} _hover={{ transform: "translateY(-3px)" }} _active={{ transform: "translateY(-3px)" }}>
+              <Button
+                variant="outline"
+                fontWeight="semibold"
+                onClick={() => handleChangeLanguage("en")}
+                bgColor={lng === "en" ? bgColorMode : undefined}
+                color={lng === "en" ? textColorMode : undefined}
+                _hover={{ transform: "translateY(-3px)" }}
+                _active={{ transform: "translateY(-3px)" }}
+              >
                 {t("EN")}
               </Button>
             </Group>
@@ -153,7 +190,17 @@ const HeaderSection = () => {
       {/* Actions Button - Mobile */}
       <Flex gap="0.5rem" display={{ base: "flex", md: "none" }}>
         {/* Read Resume */}
-        <Button paddingInline="1rem" alignItems="center" variant="outline" _hover={{ bgColor: bgColorMode, color: textColorMode, transform: "translateY(-3px)" }} _active={{ bgColor: bgColorMode, color: textColorMode, transform: "translateY(-3px)" }} transition="all 0.3s" rounded="md" size="xs" onClick={handleNavigateResume}>
+        <Button
+          paddingInline="1rem"
+          alignItems="center"
+          variant="outline"
+          _hover={{ bgColor: bgColorMode, color: textColorMode, transform: "translateY(-3px)" }}
+          _active={{ bgColor: bgColorMode, color: textColorMode, transform: "translateY(-3px)" }}
+          transition="all 0.3s"
+          rounded="md"
+          size="xs"
+          onClick={handleNavigateResume}
+        >
           <LuFileSpreadsheet />
           <Text lineHeight={1} fontWeight="semibold">
             {t("Read Resume")}
@@ -161,7 +208,16 @@ const HeaderSection = () => {
         </Button>
         {/* Send Email */}
         <a href={mailTo}>
-          <Button paddingInline="1rem" alignItems="center" variant="outline" _hover={{ bgColor: bgColorMode, color: textColorMode, transform: "translateY(-3px)" }} _active={{ bgColor: bgColorMode, color: textColorMode, transform: "translateY(-3px)" }} transition="all 0.3s" rounded="md" size="xs">
+          <Button
+            paddingInline="1rem"
+            alignItems="center"
+            variant="outline"
+            _hover={{ bgColor: bgColorMode, color: textColorMode, transform: "translateY(-3px)" }}
+            _active={{ bgColor: bgColorMode, color: textColorMode, transform: "translateY(-3px)" }}
+            transition="all 0.3s"
+            rounded="md"
+            size="xs"
+          >
             <LuMail />
             <Text lineHeight={1} fontWeight="semibold">
               {t("Send Email")}
@@ -170,11 +226,29 @@ const HeaderSection = () => {
         </a>
         {/* Language Switcher */}
         <Group attached rounded="lg">
-          <Button variant="outline" fontWeight="semibold" onClick={() => handleChangeLanguage("kh")} bgColor={lng === "kh" ? bgColorMode : undefined} color={lng === "kh" ? textColorMode : undefined} size="xs" _hover={{ transform: "translateY(-3px)" }} _active={{ transform: "translateY(-3px)" }} transition="all 0.3s">
+          <Button
+            variant="outline"
+            fontWeight="semibold"
+            onClick={() => handleChangeLanguage("kh")}
+            bgColor={lng === "kh" ? bgColorMode : undefined}
+            color={lng === "kh" ? textColorMode : undefined}
+            size="xs"
+            _hover={{ transform: "translateY(-3px)" }}
+            _active={{ transform: "translateY(-3px)" }}
+            transition="all 0.3s"
+          >
             {t("KH")}
           </Button>
 
-          <Button variant="outline" onClick={() => handleChangeLanguage("en")} bgColor={lng === "en" ? bgColorMode : undefined} color={lng === "en" ? textColorMode : undefined} size="xs" _hover={{ transform: "translateY(-3px)" }} _active={{ transform: "translateY(-3px)" }}>
+          <Button
+            variant="outline"
+            onClick={() => handleChangeLanguage("en")}
+            bgColor={lng === "en" ? bgColorMode : undefined}
+            color={lng === "en" ? textColorMode : undefined}
+            size="xs"
+            _hover={{ transform: "translateY(-3px)" }}
+            _active={{ transform: "translateY(-3px)" }}
+          >
             {t("EN")}
           </Button>
         </Group>

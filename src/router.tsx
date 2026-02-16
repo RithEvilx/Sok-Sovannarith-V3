@@ -1,26 +1,33 @@
+import { lazy, Suspense } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 // Layout
 import PublicLayout from "./layout/PublicLayout";
-// Component
-import Home from "./views/LandingPage/index";
-import Resume from "./views/Resume";
-import TechStack from "./views/TechStack";
-import Project from "./views/Project";
-import ProjectDetail from "./views/ProjectDetail";
+// Components
+import Loading from "./components/common/Loading/Loading";
+import Footer from "./views/LandingPage/Footer";
+// Routes
+const Home = lazy(() => import("./views/LandingPage/index"));
+const Resume = lazy(() => import("./views/Resume"));
+const TechStack = lazy(() => import("./views/TechStack"));
+const Project = lazy(() => import("./views/Project"));
+const ProjectDetail = lazy(() => import("./views/ProjectDetail"));
 
 const Router = () => {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<PublicLayout />}>
-          <Route index element={<Home />} />
-          <Route path="/resume" element={<Resume />} />
-          <Route path="/tech-stacks" element={<TechStack />} />
-          <Route path="/projects/" element={<Project />} />
-          <Route path="/projects/:slug" element={<ProjectDetail />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Route>
-      </Routes>
+      <Suspense fallback={<Loading />}>
+        <Routes>
+          <Route path="/" element={<PublicLayout />}>
+            <Route index element={<Home />} />
+            <Route path="/resume" element={<Resume />} />
+            <Route path="/tech-stacks" element={<TechStack />} />
+            <Route path="/projects/" element={<Project />} />
+            <Route path="/projects/:slug" element={<ProjectDetail />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Route>
+        </Routes>
+        <Footer />
+      </Suspense>
     </BrowserRouter>
   );
 };

@@ -43,7 +43,7 @@ const TechStackSection = () => {
       {/* Tech Stack List */}
       {TechStackData.map((tech, index) => (
         <Flex key={index} direction="column" gap="0.5rem">
-          <Heading size="md">{tech.category}</Heading>
+          <Heading size="md">{t(tech.category)}</Heading>
           {/* Skill List */}
           <Flex flexWrap="wrap" gap="0.35rem">
             {tech.skills.map((skill, idx) => (
