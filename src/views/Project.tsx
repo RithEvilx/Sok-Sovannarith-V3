@@ -31,7 +31,7 @@ const Project = () => {
   }, []);
 
   return (
-    <Flex direction="column" gap={{ base: "2rem", lg: "2.5rem" }}>
+    <Flex direction="column" gap={{ base: "2rem", lg: "2.5rem" }} paddingBottom="3rem">
       {/* Navigation */}
       <Flex alignItems="center" fontSize="sm" gap="0.25rem" className="group" cursor="pointer" onClick={() => navigate("/")}>
         <Box _groupHover={{ transform: "translateX(-3px)" }} _groupActive={{ transform: "translateX(-3px)" }} transition="all 0.15s">
@@ -46,7 +46,7 @@ const Project = () => {
       </Flex>
       {/* List Item */}
       <SimpleGrid columns={12} gap="1rem">
-        {ProjectData.slice(0, 4).map((project, index) => (
+        {ProjectData.map((project, index) => (
           <GridItem key={index} colSpan={{ base: 12, md: 6 }}>
             <Presence
               present={open}
