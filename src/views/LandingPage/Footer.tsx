@@ -5,7 +5,7 @@ const Footer = () => {
   const { t } = useTranslation();
 
   return (
-    <Center paddingBlock={{ base: "3rem", lg: "4rem 3rem" }}>
+    <Center paddingTop={{ base: "3rem", lg: "4rem 3rem" }}>
       <Text color="secondaryTextColor" fontSize={{ base: "xs", md: "md" }}>
         &copy; {t("2026 Sok Sovannarith. All Rights Reserved.")}
       </Text>

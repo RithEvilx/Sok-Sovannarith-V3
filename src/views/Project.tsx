@@ -31,7 +31,7 @@ const Project = () => {
   }, []);
 
   return (
-    <Flex direction="column" gap={{ base: "2rem", lg: "2.5rem" }} paddingBottom="3rem">
+    <Flex direction="column" gap={{ base: "2rem", lg: "2.5rem" }}>
       {/* Navigation */}
       <Flex alignItems="center" fontSize="sm" gap="0.25rem" className="group" cursor="pointer" onClick={() => navigate("/")}>
         <Box _groupHover={{ transform: "translateX(-3px)" }} _groupActive={{ transform: "translateX(-3px)" }} transition="all 0.15s">

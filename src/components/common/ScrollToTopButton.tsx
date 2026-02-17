@@ -7,7 +7,7 @@ import { LuArrowUp } from "react-icons/lu";
 
 const ScrollToTopButton = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const { bgColorMode, borderColorMode } = useColorModeTheme();
+  const { textColorMode, bgColorMode, borderColorMode } = useColorModeTheme();
 
   // 1. Logic to show/hide button based on scroll position
   useEffect(() => {
@@ -40,7 +40,7 @@ const ScrollToTopButton = () => {
       onClick={scrollToTop}
       // 1. Fixed Position - Bottom Center
       position="fixed"
-      bottom="1.25rem" // Distance from the bottom
+      bottom={{ base: "2.5rem", lg: "3.5rem" }} // Distance from the bottom
       left="50%" // Move to the middle of the screen
       // 2. Centering & Animation Logic
       // translateX(-50%) centers it horizontally
@@ -62,12 +62,12 @@ const ScrollToTopButton = () => {
       border="1px solid"
       borderColor={borderColorMode}
       rounded="full"
+      color={textColorMode}
+      bgColor={bgColorMode}
       _hover={{
-        bgColor: bgColorMode,
         transform: "translateX(-50%) scale(1.1)", // Keep it centered while hovering
       }}
       _active={{
-        bgColor: bgColorMode,
         transform: "translateX(-50%) scale(1.1)", // Keep it centered while hovering
       }}
       backdropFilter="blur(3px)"
