@@ -41,10 +41,10 @@ const LocalTimeSection = () => {
 
       <Flex alignItems="center" width="100%" height="100%">
         {/* Time and Location Display */}
-        <Flex direction={{ base: "column", md: "row" }} justifyContent="space-between" alignItems={{ md: "flex-end" }} width="100%">
+        <Flex justifyContent="space-between" alignItems="flex-end" width="100%">
           <Flex direction="column">
             {/* Main Time Display */}
-            <Text fontSize="3xl" fontWeight="bold" lineHeight={1.1}>
+            <Text fontSize={{ base: "2xl", md: "3xl" }} fontWeight="bold" lineHeight={1.1}>
               {moment(currentTime).format("HH:mm:ss A")}
             </Text>
             {/* Full Date */}

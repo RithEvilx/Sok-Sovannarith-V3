@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Flex, GridItem, Presence, SimpleGrid, useDisclosure } from "@chakra-ui/react";
+import { Box, Flex, GridItem, Presence, SimpleGrid, useDisclosure } from "@chakra-ui/react";
 // Right - Components
 import HeaderSection from "./HeaderSection";
 import LocalTimeSection from "./LocalTimeSection";
@@ -28,58 +28,65 @@ const Home = () => {
     return () => clearTimeout(scrollTimer);
   }, []);
 
+  const presenceProps = {
+    lazyMount: true,
+    unmountOnExit: true,
+    present: open,
+    animationStyle: { _open: "scale-fade-in", _closed: "scale-fade-out" },
+    animationDuration: "1000ms",
+  };
+
   return (
-    <SimpleGrid columns={12} gap="1rem">
-      {/* 1. HEADER - Always Top */}
-      <GridItem colSpan={12} order={1}>
-        <Presence present={open} animationStyle={{ _open: "scale-fade-in" }} animationDuration="1000ms">
-          <HeaderSection />
-        </Presence>
-      </GridItem>
+    <Box>
+      {/* --- MOBILE VIEW: Custom Sequence (Hidden on Desktop) --- */}
+      <Flex direction="column" gap="1rem" hideFrom="lg">
+        <Presence {...presenceProps}><HeaderSection /></Presence>
+        <Presence {...presenceProps}><AboutUsSection /></Presence>
+        <Presence {...presenceProps}><LocalTimeSection /></Presence>
+        <Presence {...presenceProps}><WorkExperienceSection /></Presence>
+        <Presence {...presenceProps}><TechStackSection /></Presence>
+        <Presence {...presenceProps}><ProjectSection /></Presence>
+        <Presence {...presenceProps}><EducationSection /></Presence>
+        <Presence {...presenceProps}><BeyondScreenSection /></Presence>
+        <Presence {...presenceProps}><GetInTouchSection /></Presence>
+        <Presence {...presenceProps}><Footer /></Presence>
+      </Flex>
 
-      {/* 2. MAIN CONTENT (Work & Projects) - Order 2 on Mobile, Right side on Desktop */}
-      <GridItem colSpan={{ base: 12, lg: 7 }} order={{ base: 2, lg: 2 }}>
-        <Flex direction="column" gap="1rem">
-          <Presence present={open} animationStyle={{ _open: "scale-fade-in" }}>
-            <WorkExperienceSection />
+      {/* --- DESKTOP VIEW: Split Columns (Hidden on Mobile) --- */}
+      <SimpleGrid columns={12} gap="1rem" hideBelow="lg">
+        {/* Header Section */}
+        <GridItem colSpan={12}>
+          <Presence {...presenceProps} animationDuration="1000ms">
+            <HeaderSection />
           </Presence>
-          <Presence present={open} animationStyle={{ _open: "scale-fade-in" }}>
-            <ProjectSection />
-          </Presence>
-          <Presence present={open} animationStyle={{ _open: "scale-fade-in" }}>
-            <GetInTouchSection />
-          </Presence>
-        </Flex>
-      </GridItem>
+        </GridItem>
 
-      {/* 3. SIDEBAR (About, Education, Tech) - Order 3 on Mobile, Left side on Desktop */}
-      <GridItem colSpan={{ base: 12, lg: 5 }} order={{ base: 3, lg: 1 }}>
-        <Flex direction="column" gap="1rem">
-          <Presence present={open} animationStyle={{ _open: "scale-fade-in" }}>
-            <AboutUsSection />
-          </Presence>
-          <Presence present={open} animationStyle={{ _open: "scale-fade-in" }}>
-            <LocalTimeSection />
-          </Presence>
-          <Presence present={open} animationStyle={{ _open: "scale-fade-in" }}>
-            <TechStackSection />
-          </Presence>
-          <Presence present={open} animationStyle={{ _open: "scale-fade-in" }}>
-            <EducationSection />
-          </Presence>
-          <Presence present={open} animationStyle={{ _open: "scale-fade-in" }}>
-            <BeyondScreenSection />
-          </Presence>
-        </Flex>
-      </GridItem>
+        {/* Left Column (Span 5) */}
+        <GridItem colSpan={5}>
+          <Flex direction="column" gap="1rem">
+            <Presence {...presenceProps}><LocalTimeSection /></Presence>
+            <Presence {...presenceProps}><AboutUsSection /></Presence>
+            <Presence {...presenceProps}><EducationSection /></Presence>
+            <Presence {...presenceProps}><TechStackSection /></Presence>
+            <Presence {...presenceProps}><BeyondScreenSection /></Presence>
+          </Flex>
+        </GridItem>
 
-      {/* 4. FOOTER - Always Bottom */}
-      <GridItem colSpan={12} order={4}>
-        <Presence present={open} animationStyle={{ _open: "scale-fade-in" }}>
-          <Footer />
-        </Presence>
-      </GridItem>
-    </SimpleGrid>
+        {/* Right Column (Span 7) */}
+        <GridItem colSpan={7}>
+          <Flex direction="column" gap="1rem">
+            <Presence {...presenceProps}><WorkExperienceSection /></Presence>
+            <Presence {...presenceProps}><ProjectSection /></Presence>
+            <Presence {...presenceProps}><GetInTouchSection /></Presence>
+          </Flex>
+        </GridItem>
+
+        {/* Footer Section */}
+        <GridItem colSpan={12}>
+          <Presence {...presenceProps}><Footer /></Presence>
+        </GridItem>
+      </SimpleGrid>
+    </Box>
   );
 };
 
