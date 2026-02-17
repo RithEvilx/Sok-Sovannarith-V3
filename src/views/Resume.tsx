@@ -9,7 +9,7 @@ const Resume = () => {
     return () => clearTimeout(scrollTimer);
   }, []);
 
-  return <div>Resume</div>;
+  return <div>Coming Soon</div>;
 };
 
 export default Resume;
