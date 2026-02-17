@@ -1,6 +1,7 @@
 import type { GetInTouchDataType } from "@/types/GetInTouchDataType";
 
 export const GetInTouchData: GetInTouchDataType = {
+  name: "Sok Sovannarith",
   description: "Hello World",
   linkedin: "linkedin.com/in/sok-sovannarith",
   github: "https://github.com/RithEvilx",

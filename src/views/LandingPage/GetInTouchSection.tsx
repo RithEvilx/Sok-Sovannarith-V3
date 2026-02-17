@@ -7,10 +7,43 @@ import { FaEnvelope, FaGithub, FaLinkedin, FaTelegram, FaYoutube } from "react-i
 // Data
 import { GetInTouchData } from "@/constants/data/GetInTouchData";
 import { LuCornerDownRight } from "react-icons/lu";
+import { useForm } from "react-hook-form";
+
+type formDataType = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  message: string;
+};
 
 const GetInTouchSection = () => {
   const { t } = useTranslation();
   const { bgColorMode, textColorMode, borderColorMode } = useColorModeTheme();
+
+  const { register, handleSubmit, reset } = useForm<formDataType>({
+    defaultValues: {
+      firstName: "",
+      lastName: "",
+      email: "",
+      message: "",
+    },
+  });
+
+  const onHandleSubmit = (data: formDataType) => {
+    const subject = encodeURIComponent("Inquiry from Portfolio");
+    const body = encodeURIComponent(
+      `Dear Mr. ${GetInTouchData?.name},\n\n` + `My name is ${data.lastName} ${data.firstName}\n\n` + `${data.message}\n\n` + `From: ${data.email}`,
+    );
+
+    const mailtoUrl = `mailto:${GetInTouchData?.email}?subject=${subject}&body=${body}`;
+
+    // Use window.open instead of assigning to .href
+    // '_self' ensures it doesn't try to open a blank new tab
+    // before launching the email app.
+    window.open(mailtoUrl, "_self");
+
+    reset();
+  };
 
   return (
     <Flex {...ContainerHoverStyle}>
@@ -105,41 +138,47 @@ const GetInTouchSection = () => {
           </Flex>
         </GridItem>
         <GridItem colSpan={{ base: 12, lg: 7 }}>
-          <Flex direction="column" gap="0.615rem">
-            <Flex alignItems="center" justifyContent="space-between">
-              <Text>{t("GET IN TOUCH")}</Text>
-              <Button
-                unstyled
-                type="submit"
-                display="flex"
-                alignItems="center"
-                gap="0.5rem"
-                border="1px solid"
-                borderColor={borderColorMode}
-                paddingInline="0.5rem"
-                rounded="sm"
-                _hover={{ bgColor: bgColorMode, color: textColorMode }}
-                _active={{ bgColor: bgColorMode, color: textColorMode }}
-                transition="all 0.15s"
-                cursor="pointer"
-              >
-                {t("Send")}
-                <LuCornerDownRight />
-              </Button>
+          <form onSubmit={handleSubmit(onHandleSubmit)}>
+            <Flex direction="column" gap="0.5rem">
+              <Flex alignItems="center" justifyContent="space-between">
+                <Text>{t("GET IN TOUCH")}</Text>
+                <Button
+                  unstyled
+                  type="submit"
+                  display="flex"
+                  alignItems="center"
+                  gap="0.5rem"
+                  border="1px solid"
+                  borderColor={borderColorMode}
+                  paddingInline="0.5rem"
+                  rounded="sm"
+                  _hover={{ bgColor: bgColorMode, color: textColorMode }}
+                  _active={{ bgColor: bgColorMode, color: textColorMode }}
+                  transition="all 0.15s"
+                  cursor="pointer"
+                >
+                  {t("Send")}
+                  <LuCornerDownRight />
+                </Button>
+              </Flex>
+              <Flex direction="column">
+                <SimpleGrid columns={12} gap="0.6rem">
+                  <GridItem colSpan={6}>
+                    <Input type="text" {...register("firstName")} placeholder="Firstname" paddingInline="0.5rem" />
+                  </GridItem>
+                  <GridItem colSpan={6}>
+                    <Input type="text" {...register("lastName")} placeholder="Lastname" paddingInline="0.5rem" />
+                  </GridItem>
+                  <GridItem colSpan={12}>
+                    <Input type="email" {...register("email")} placeholder="Email" paddingInline="0.5rem" />
+                  </GridItem>
+                  <GridItem colSpan={12}>
+                    <Textarea {...register("message")} placeholder="Message" resize="none" padding="0.5rem" />
+                  </GridItem>
+                </SimpleGrid>
+              </Flex>
             </Flex>
-            <Flex direction="column" gap="0.75rem">
-              <SimpleGrid columns={12} gap="0.75rem">
-                <GridItem colSpan={6}>
-                  <Input type="text" placeholder="Firstname" paddingInline="0.5rem" />
-                </GridItem>
-                <GridItem colSpan={6}>
-                  <Input type="text" placeholder="Lastname" paddingInline="0.5rem" />
-                </GridItem>
-              </SimpleGrid>
-              <Input type="email" placeholder="Email" paddingInline="0.5rem" />
-              <Textarea placeholder="Message" resize="none" padding="0.5rem" />
-            </Flex>
-          </Flex>
+          </form>
         </GridItem>
       </SimpleGrid>
     </Flex>

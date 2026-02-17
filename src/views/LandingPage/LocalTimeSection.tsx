@@ -41,7 +41,7 @@ const LocalTimeSection = () => {
 
       <Flex alignItems="center" width="100%" height="100%">
         {/* Time and Location Display */}
-        <Flex justifyContent="space-between" alignItems="flex-end" width="100%">
+        <Flex direction={{ base: "column", md: "row" }} justifyContent="space-between" alignItems={{ md: "flex-end" }} width="100%">
           <Flex direction="column">
             {/* Main Time Display */}
             <Text fontSize="3xl" fontWeight="bold" lineHeight={1.1}>
@@ -54,7 +54,7 @@ const LocalTimeSection = () => {
           </Flex>
 
           {/* Static Location Info */}
-          <Box textAlign="right">
+          <Flex direction="column" alignItems="flex-end">
             <Flex alignItems="center" gap="0.25rem" fontWeight="bold" fontSize="md" color="blue.500">
               <LuMapPin />
               <Text>{t("Phnom Penh")}</Text>
@@ -62,7 +62,7 @@ const LocalTimeSection = () => {
             <Text fontSize="xs" color="gray.400" fontWeight="medium">
               {t("Cambodia (GMT+7)")}
             </Text>
-          </Box>
+          </Flex>
         </Flex>
       </Flex>
     </Flex>
