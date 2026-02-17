@@ -161,22 +161,20 @@ const GetInTouchSection = () => {
                   <LuCornerDownRight />
                 </Button>
               </Flex>
-              <Flex direction="column">
-                <SimpleGrid columns={12} gap="0.6rem">
-                  <GridItem colSpan={6}>
-                    <Input type="text" {...register("firstName")} placeholder={t("Firstname")} paddingInline="0.5rem" />
-                  </GridItem>
-                  <GridItem colSpan={6}>
-                    <Input type="text" {...register("lastName")} placeholder={t("Lastname")} paddingInline="0.5rem" />
-                  </GridItem>
-                  <GridItem colSpan={12}>
-                    <Input type="email" {...register("email")} placeholder={t("Email")} paddingInline="0.5rem" />
-                  </GridItem>
-                  <GridItem colSpan={12}>
-                    <Textarea {...register("message")} placeholder={t("Message")} resize="none" padding="0.5rem" />
-                  </GridItem>
-                </SimpleGrid>
-              </Flex>
+              <SimpleGrid columns={12} gap="0.6rem">
+                <GridItem colSpan={{ base: 12, md: 6 }}>
+                  <Input type="text" {...register("firstName")} placeholder={t("Firstname")} paddingInline="0.5rem" />
+                </GridItem>
+                <GridItem colSpan={{ base: 12, md: 6 }}>
+                  <Input type="text" {...register("lastName")} placeholder={t("Lastname")} paddingInline="0.5rem" />
+                </GridItem>
+                <GridItem colSpan={12}>
+                  <Input type="email" {...register("email")} placeholder={t("Email")} paddingInline="0.5rem" />
+                </GridItem>
+                <GridItem colSpan={12}>
+                  <Textarea {...register("message")} placeholder={t("Message")} resize="none" padding="0.5rem" />
+                </GridItem>
+              </SimpleGrid>
             </Flex>
           </form>
         </GridItem>
