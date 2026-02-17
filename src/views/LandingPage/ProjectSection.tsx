@@ -114,7 +114,7 @@ const ProjectSection = () => {
                         transition="all 0.15s"
                       >
                         <LuScanEye />
-                        {t("Live Demo")}
+                        {t("Demo")}
                       </Flex>
                     </Link>
                   )}
