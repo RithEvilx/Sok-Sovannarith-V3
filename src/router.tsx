@@ -1,9 +1,10 @@
 import { lazy, Suspense } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 // Layout
-import PublicLayout from "./layout/PublicLayout";
-// Component
+import PublicLayout from "./layouts/PublicLayout";
+// Components
 import Loading from "./components/common/Loading/Loading";
+import ScrollToTopButton from "./components/common/ScrollToTopButton";
 // Routes
 const Home = lazy(() => import("./views/LandingPage/index"));
 const Resume = lazy(() => import("./views/Resume"));
@@ -26,6 +27,7 @@ const Router = () => {
           </Route>
         </Routes>
       </Suspense>
+      <ScrollToTopButton />
     </BrowserRouter>
   );
 };

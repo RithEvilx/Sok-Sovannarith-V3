@@ -46,7 +46,7 @@ const Project = () => {
       </Flex>
       {/* List Item */}
       <SimpleGrid columns={12} gap="1rem">
-        {ProjectData.slice(0, 4).map((project, index) => (
+        {ProjectData.map((project, index) => (
           <GridItem key={index} colSpan={{ base: 12, md: 6 }}>
             <Presence
               present={open}
@@ -156,7 +156,7 @@ const Project = () => {
                           transition="all 0.15s"
                         >
                           <LuScanEye />
-                          {t("Live Demo")}
+                          {t("Demo")}
                         </Flex>
                       </Link>
                     )}

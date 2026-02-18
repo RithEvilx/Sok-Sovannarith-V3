@@ -83,7 +83,7 @@ export const ProjectData: ProjectDataType[] = [
     name: "First Portfolio",
     date: "May 2024",
     description:
-      "A personal milestone project created after my Year 4 exams. This portfolio serves as a comprehensive showcase of my academic journey, technical skills, and initial professional experiences.",
+      "A personal milestone project created after my year-4 final exams. This portfolio serves as a comprehensive showcase of my academic journey, technical skills, and initial professional experiences.",
     stack: ["HTML", "CSS"],
     demo: "https://rithevilx.github.io/soksovannarith",
     github: "https://github.com/RithEvilx/soksovannarith",

@@ -5,7 +5,7 @@ export const ContainerHoverStyle = {
   flexDirection: "column",
   gap: "1.5rem",
   rounded: "lg",
-  padding: "1.25rem",
+  padding: { base: "1rem", md: "1.25rem" },
   transition: "all 0.15s",
   border: "1px solid",
   borderColor: {

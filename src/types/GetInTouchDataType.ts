@@ -1,4 +1,5 @@
 export type GetInTouchDataType = {
+  name?: string;
   description?: string;
   linkedin?: string;
   github?: string;

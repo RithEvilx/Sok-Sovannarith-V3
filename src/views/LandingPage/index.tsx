@@ -1,19 +1,18 @@
 import { useEffect } from "react";
-import { Flex, GridItem, Presence, SimpleGrid, useDisclosure } from "@chakra-ui/react";
-// Component
-// Right
+import { Box, Flex, GridItem, Presence, SimpleGrid, useDisclosure } from "@chakra-ui/react";
+// Right - Components
 import HeaderSection from "./HeaderSection";
 import LocalTimeSection from "./LocalTimeSection";
 import AboutUsSection from "./AboutMeSection";
 import EducationSection from "./EducationSection";
 import TechStackSection from "./TechStackSection";
 import BeyondScreenSection from "./BeyondScreenSection";
-// Left
+// Left - Components
 import WorkExperienceSection from "./WorkExperienceSection";
 import ProjectSection from "./ProjectSection";
-// Bottom
-import Footer from "./Footer";
 import GetInTouchSection from "./GetInTouchSection";
+// Bottom - Components
+import Footer from "./Footer";
 
 const Home = () => {
   const { open, onOpen } = useDisclosure();
@@ -26,127 +25,68 @@ const Home = () => {
     const scrollTimer = setTimeout(() => {
       window.scrollTo({ top: 0, left: 0, behavior: "instant" });
     }, 0);
-
     return () => clearTimeout(scrollTimer);
   }, []);
 
+  const presenceProps = {
+    lazyMount: true,
+    unmountOnExit: true,
+    present: open,
+    animationStyle: { _open: "scale-fade-in", _closed: "scale-fade-out" },
+    animationDuration: "1000ms",
+  };
+
   return (
-    <>
-      <SimpleGrid columns={12} gap="1rem">
+    <Box>
+      {/* --- MOBILE VIEW: Custom Sequence (Hidden on Desktop) --- */}
+      <Flex direction="column" gap="1rem" hideFrom="lg">
+        <Presence {...presenceProps}><HeaderSection /></Presence>
+        <Presence {...presenceProps}><AboutUsSection /></Presence>
+        <Presence {...presenceProps}><LocalTimeSection /></Presence>
+        <Presence {...presenceProps}><WorkExperienceSection /></Presence>
+        <Presence {...presenceProps}><TechStackSection /></Presence>
+        <Presence {...presenceProps}><ProjectSection /></Presence>
+        <Presence {...presenceProps}><EducationSection /></Presence>
+        <Presence {...presenceProps}><BeyondScreenSection /></Presence>
+        <Presence {...presenceProps}><GetInTouchSection /></Presence>
+        <Presence {...presenceProps}><Footer /></Presence>
+      </Flex>
+
+      {/* --- DESKTOP VIEW: Split Columns (Hidden on Mobile) --- */}
+      <SimpleGrid columns={12} gap="1rem" hideBelow="lg">
+        {/* Header Section */}
         <GridItem colSpan={12}>
-          {/* Profile */}
-          <Presence
-            lazyMount
-            unmountOnExit
-            present={open}
-            animationStyle={{ _open: "scale-fade-in", _closed: "scale-fade-out" }}
-            animationDuration="1000ms"
-          >
+          <Presence {...presenceProps} animationDuration="1000ms">
             <HeaderSection />
           </Presence>
         </GridItem>
-        <GridItem colSpan={{ base: 12, lg: 5 }}>
+
+        {/* Left Column (Span 5) */}
+        <GridItem colSpan={5}>
           <Flex direction="column" gap="1rem">
-            {/* Local Time */}
-            <Presence
-              lazyMount
-              unmountOnExit
-              present={open}
-              animationStyle={{ _open: "scale-fade-in", _closed: "scale-fade-out" }}
-              animationDuration="1000ms"
-            >
-              <LocalTimeSection />
-            </Presence>
-            {/* About Me */}
-            <Presence
-              lazyMount
-              unmountOnExit
-              present={open}
-              animationStyle={{ _open: "scale-fade-in", _closed: "scale-fade-out" }}
-              animationDuration="1000ms"
-            >
-              <AboutUsSection />
-            </Presence>
-            {/* Education */}
-            <Presence
-              lazyMount
-              unmountOnExit
-              present={open}
-              animationStyle={{ _open: "scale-fade-in", _closed: "scale-fade-out" }}
-              animationDuration="1000ms"
-            >
-              <EducationSection />
-            </Presence>
-            {/* Tech Stack */}
-            <Presence
-              lazyMount
-              unmountOnExit
-              present={open}
-              animationStyle={{ _open: "scale-fade-in", _closed: "scale-fade-out" }}
-              animationDuration="1000ms"
-            >
-              <TechStackSection />
-            </Presence>
-            {/* Beyond the screen */}
-            <Presence
-              lazyMount
-              unmountOnExit
-              present={open}
-              animationStyle={{ _open: "scale-fade-in", _closed: "scale-fade-out" }}
-              animationDuration="1000ms"
-            >
-              <BeyondScreenSection />
-            </Presence>
+            <Presence {...presenceProps}><LocalTimeSection /></Presence>
+            <Presence {...presenceProps}><AboutUsSection /></Presence>
+            <Presence {...presenceProps}><EducationSection /></Presence>
+            <Presence {...presenceProps}><TechStackSection /></Presence>
+            <Presence {...presenceProps}><BeyondScreenSection /></Presence>
           </Flex>
         </GridItem>
-        <GridItem colSpan={{ base: 12, lg: 7 }}>
+
+        {/* Right Column (Span 7) */}
+        <GridItem colSpan={7}>
           <Flex direction="column" gap="1rem">
-            {/* Work Experience */}
-            <Presence
-              lazyMount
-              unmountOnExit
-              present={open}
-              animationStyle={{ _open: "scale-fade-in", _closed: "scale-fade-out" }}
-              animationDuration="1000ms"
-            >
-              <WorkExperienceSection />
-            </Presence>
-            {/* Project */}
-            <Presence
-              lazyMount
-              unmountOnExit
-              present={open}
-              animationStyle={{ _open: "scale-fade-in", _closed: "scale-fade-out" }}
-              animationDuration="1000ms"
-            >
-              <ProjectSection />
-            </Presence>
-            {/* Get In Touch */}
-            <Presence
-              lazyMount
-              unmountOnExit
-              present={open}
-              animationStyle={{ _open: "scale-fade-in", _closed: "scale-fade-out" }}
-              animationDuration="1000ms"
-            >
-              <GetInTouchSection />
-            </Presence>
+            <Presence {...presenceProps}><WorkExperienceSection /></Presence>
+            <Presence {...presenceProps}><ProjectSection /></Presence>
+            <Presence {...presenceProps}><GetInTouchSection /></Presence>
           </Flex>
         </GridItem>
+
+        {/* Footer Section */}
         <GridItem colSpan={12}>
-          {/* Footer */}
-          <Presence
-            lazyMount
-            unmountOnExit
-            present={open}
-            animationStyle={{ _open: "scale-fade-in", _closed: "scale-fade-out" }}
-            animationDuration="1000ms"
-          >
-            <Footer />
-          </Presence>
+          <Presence {...presenceProps}><Footer /></Presence>
         </GridItem>
       </SimpleGrid>
-    </>
+    </Box>
   );
 };
 

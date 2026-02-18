@@ -8,6 +8,8 @@
 
 body {
   font-family: "Poppins", "Hanuman", Arial;
+  -webkit-print-color-adjust: exact; /* Ensures colors/backgrounds show up */
+  print-color-adjust: exact;
 }
 
 html {
@@ -42,7 +44,7 @@ span {
   src: url(./assets/fonts/poppins/Poppins-Regular.ttf);
 }
 
-/*?? === Global scrollbar === */
+/*? === Global scrollbar === */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -56,4 +58,72 @@ span {
 ::-webkit-scrollbar-thumb {
   background: gray;
   border-radius: 24px;
+}
+
+/*? React to Print */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+  .a4-print {
+    display: flex !important;
+    /* width: 210mm;
+    height: 297mm; */
+  }
+}
+
+@keyframes scale-in {
+  from {
+    transform: scale(1.1);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes bounce-left {
+  0% {
+    transform: translateX(50px);
+    opacity: 0;
+  }
+  25% {
+    transform: translateX(30px);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateX(10px);
+    opacity: 0.6;
+  }
+  75% {
+    transform: translateX(-5px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+.a4-paper {
+  animation: scale-in 0.5s ease-out forwards;
+}
+
+.a4-paper > .info,
+.a4-paper > .detail {
+  animation: scale-in 0.8s ease-out forwards;
+}
+
+.a4-paper > .info > *,
+.a4-paper > .detail > * {
+  animation: scale-in 1.5s ease-out forwards;
+}
+
+.contact-button {
+  animation: bounce-left 500ms ease-out forwards;
+}
+
+.print-button {
+  animation: bounce-left 600ms ease-out forwards;
 }
