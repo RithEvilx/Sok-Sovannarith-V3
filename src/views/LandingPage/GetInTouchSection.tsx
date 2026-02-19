@@ -1,13 +1,13 @@
+import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { Box, Button, Center, Flex, GridItem, Heading, Input, Link, SimpleGrid, Span, Text, Textarea } from "@chakra-ui/react";
 // Styles
 import { ContainerHoverStyle, useColorModeTheme } from "@/constants/style";
 // Icons
-import { FaEnvelope, FaGithub, FaLinkedin, FaTelegram, FaYoutube } from "react-icons/fa";
+import { LuChevronRight } from "react-icons/lu";
+import { FaGithub, FaLinkedin, FaTelegram, FaYoutube } from "react-icons/fa";
 // Data
 import { GetInTouchData } from "@/constants/data/GetInTouchData";
-import { LuCornerDownRight } from "react-icons/lu";
-import { useForm } from "react-hook-form";
 
 type formDataType = {
   firstName: string;
@@ -63,6 +63,7 @@ const GetInTouchSection = () => {
               {GetInTouchData?.linkedin && (
                 <Link
                   href={GetInTouchData.linkedin}
+                  target="_blank"
                   _hover={{ bgColor: bgColorMode, color: textColorMode }}
                   _active={{ bgColor: bgColorMode, color: textColorMode }}
                   transition="all 0.15s"
@@ -78,6 +79,7 @@ const GetInTouchSection = () => {
               {GetInTouchData?.github && (
                 <Link
                   href={GetInTouchData.github}
+                  target="_blank"
                   _hover={{ bgColor: bgColorMode, color: textColorMode }}
                   _active={{ bgColor: bgColorMode, color: textColorMode }}
                   transition="all 0.15s"
@@ -93,6 +95,7 @@ const GetInTouchSection = () => {
               {GetInTouchData?.telegram && (
                 <Link
                   href={GetInTouchData.telegram}
+                  target="_blank"
                   _hover={{ bgColor: bgColorMode, color: textColorMode }}
                   _active={{ bgColor: bgColorMode, color: textColorMode }}
                   transition="all 0.15s"
@@ -104,25 +107,11 @@ const GetInTouchSection = () => {
                   </Center>
                 </Link>
               )}
-              {/* Email */}
-              {GetInTouchData?.email && (
-                <Link
-                  href={`mailto:${GetInTouchData.email}`}
-                  _hover={{ bgColor: bgColorMode, color: textColorMode }}
-                  _active={{ bgColor: bgColorMode, color: textColorMode }}
-                  transition="all 0.15s"
-                >
-                  <Center as="button" rounded="sm" padding="0.25rem" border="1px solid" borderColor={borderColorMode} cursor="pointer">
-                    <Box fontSize="1.25rem">
-                      <FaEnvelope />
-                    </Box>
-                  </Center>
-                </Link>
-              )}
               {/* Youtube */}
               {GetInTouchData?.youtube && (
                 <Link
-                  href={`mailto:${GetInTouchData.youtube}`}
+                  href={GetInTouchData.youtube}
+                  target="_blank"
                   _hover={{ bgColor: bgColorMode, color: textColorMode }}
                   _active={{ bgColor: bgColorMode, color: textColorMode }}
                   transition="all 0.15s"
@@ -140,14 +129,15 @@ const GetInTouchSection = () => {
         <GridItem colSpan={{ base: 12, lg: 7 }}>
           <form onSubmit={handleSubmit(onHandleSubmit)}>
             <Flex direction="column" gap="0.5rem">
-              <Flex alignItems="center" justifyContent="space-between">
-                <Text>{t("GET IN TOUCH")}</Text>
+              <Flex alignItems="flex-end" justifyContent="space-between">
+                <Text lineHeight={1}>{t("GET IN TOUCH")}</Text>
                 <Button
                   unstyled
                   type="submit"
+                  size="xs"
                   display="flex"
                   alignItems="center"
-                  gap="0.5rem"
+                  gap="0.25rem"
                   border="1px solid"
                   borderColor={borderColorMode}
                   paddingInline="0.5rem"
@@ -156,9 +146,12 @@ const GetInTouchSection = () => {
                   _active={{ bgColor: bgColorMode, color: textColorMode }}
                   transition="all 0.15s"
                   cursor="pointer"
+                  className="group"
                 >
-                  {t("Send")}
-                  <LuCornerDownRight />
+                  <Text fontSize="sm">{t("Send")}</Text>
+                  <Box _groupHover={{ transform: "translateX(3px)" }} _groupActive={{ transform: "translateX(3px)" }} transition="all 0.15s">
+                    <LuChevronRight />
+                  </Box>
                 </Button>
               </Flex>
               <SimpleGrid columns={12} gap="0.6rem">

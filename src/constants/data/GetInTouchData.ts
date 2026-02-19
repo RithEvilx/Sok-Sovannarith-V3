@@ -3,9 +3,8 @@ import type { GetInTouchDataType } from "@/types/GetInTouchDataType";
 export const GetInTouchData: GetInTouchDataType = {
   name: "Sok Sovannarith",
   description: "Hello World",
-  linkedin: "linkedin.com/in/sok-sovannarith",
+  linkedin: "https://linkedin.com/in/sok-sovannarith",
   github: "https://github.com/RithEvilx",
-  telegram: "telegram",
+  telegram: "https://t.me/rithevil",
   youtube: "https://www.youtube.com/@rithevil",
-  email: "soksovannarithx@gmail.com",
 };
