@@ -117,7 +117,7 @@ span {
 
 .a4-paper > .info > *,
 .a4-paper > .detail > * {
-  animation: scale-in 1.5s ease-out forwards;
+  animation: scale-in 1s ease-out forwards;
 }
 
 .contact-button {
