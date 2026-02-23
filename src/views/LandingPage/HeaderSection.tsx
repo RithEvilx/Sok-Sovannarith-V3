@@ -127,7 +127,7 @@ const HeaderSection = () => {
           </Text>
           {/* Actions Button - Table & Desktop */}
           <Flex gap="0.5rem" display={{ base: "none", md: "flex" }}>
-            {/* Read Resume */}
+            {/* View Resume */}
             <Button
               paddingInline="1rem"
               alignItems="center"
@@ -139,7 +139,7 @@ const HeaderSection = () => {
             >
               <LuFileSpreadsheet />
               <Text lineHeight={1} fontWeight="semibold">
-                {t("Read Resume")}
+                {t("View Resume")}
               </Text>
             </Button>
             {/* Send Email */}
