@@ -220,7 +220,7 @@ const ResumeLayout = ({ personalData, printRef, profile }: any) => {
               {personalData.work_experience.map((experience: work_experience, index: number) => (
                 <Timeline.Item key={index}>
                   <Timeline.Connector>
-                    <Timeline.Separator />
+                    <Timeline.Separator marginTop="1rem" />
                     <Timeline.Indicator scale={0.5}></Timeline.Indicator>
                   </Timeline.Connector>
                   <Timeline.Content width="auto" gap={0} paddingBottom={"3px"}>
@@ -254,7 +254,7 @@ const ResumeLayout = ({ personalData, printRef, profile }: any) => {
               {personalData.training.map((education: education, idx: number) => (
                 <Timeline.Item key={idx}>
                   <Timeline.Connector>
-                    <Timeline.Separator />
+                    <Timeline.Separator marginTop="1rem" />
                     <Timeline.Indicator scale={0.5}></Timeline.Indicator>
                   </Timeline.Connector>
                   <Timeline.Content width="auto" gap={0} paddingBottom={"5px"}>
@@ -279,7 +279,7 @@ const ResumeLayout = ({ personalData, printRef, profile }: any) => {
               {personalData.education.map((education: education, idx: number) => (
                 <Timeline.Item key={idx}>
                   <Timeline.Connector>
-                    <Timeline.Separator />
+                    <Timeline.Separator marginTop="1rem" />
                     <Timeline.Indicator scale={0.5}></Timeline.Indicator>
                   </Timeline.Connector>
                   <Timeline.Content width="auto" gap={0} paddingBottom={"5px"}>
