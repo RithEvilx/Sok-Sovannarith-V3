@@ -19,16 +19,9 @@ const HeaderSection = () => {
   const { i18n, t } = useTranslation();
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
-  const [lng, setLng] = useState<string>(() => localStorage.getItem("language") || "en");
 
   const { colorMode, toggleColorMode } = useColorMode();
   const { bgColorMode, textColorMode } = useColorModeTheme();
-
-  // Keep i18next in sync on first render (and if lng changes)
-  useEffect(() => {
-    i18n.changeLanguage(lng);
-    localStorage.setItem("language", lng);
-  }, [lng, i18n]);
 
   // Reset clicked state after 3 seconds
   useEffect(() => {
@@ -40,8 +33,11 @@ const HeaderSection = () => {
     }
   }, [isClicked]);
 
+  const currentLng = i18n.language;
+
   const handleChangeLanguage = (next: "en" | "kh") => {
-    setLng(next); // triggers re-render + effect above runs
+    i18n.changeLanguage(next);
+    localStorage.setItem("language", next);
   };
 
   // Only apply click behavior on mobile/md, not on lg
@@ -164,8 +160,8 @@ const HeaderSection = () => {
                 variant="outline"
                 fontWeight="semibold"
                 onClick={() => handleChangeLanguage("kh")}
-                bgColor={lng === "kh" ? bgColorMode : undefined}
-                color={lng === "kh" ? textColorMode : undefined}
+                bgColor={currentLng === "kh" ? bgColorMode : undefined}
+                color={currentLng === "kh" ? textColorMode : undefined}
                 _hover={{ transform: "translateY(-3px)" }}
                 _active={{ transform: "translateY(-3px)" }}
               >
@@ -176,8 +172,8 @@ const HeaderSection = () => {
                 variant="outline"
                 fontWeight="semibold"
                 onClick={() => handleChangeLanguage("en")}
-                bgColor={lng === "en" ? bgColorMode : undefined}
-                color={lng === "en" ? textColorMode : undefined}
+                bgColor={currentLng === "en" ? bgColorMode : undefined}
+                color={currentLng === "en" ? textColorMode : undefined}
                 _hover={{ transform: "translateY(-3px)" }}
                 _active={{ transform: "translateY(-3px)" }}
               >
@@ -189,7 +185,7 @@ const HeaderSection = () => {
       </Flex>
       {/* Actions Button - Mobile */}
       <Flex gap="0.5rem" display={{ base: "flex", md: "none" }}>
-        {/* Read Resume */}
+        {/* View Resume */}
         <Button
           paddingInline="1rem"
           alignItems="center"
@@ -203,7 +199,7 @@ const HeaderSection = () => {
         >
           <LuFileSpreadsheet />
           <Text lineHeight={1} fontWeight="semibold">
-            {t("Read Resume")}
+            {t("View Resume")}
           </Text>
         </Button>
         {/* Send Email */}
@@ -230,8 +226,8 @@ const HeaderSection = () => {
             variant="outline"
             fontWeight="semibold"
             onClick={() => handleChangeLanguage("kh")}
-            bgColor={lng === "kh" ? bgColorMode : undefined}
-            color={lng === "kh" ? textColorMode : undefined}
+            bgColor={currentLng === "kh" ? bgColorMode : undefined}
+            color={currentLng === "kh" ? textColorMode : undefined}
             size="xs"
             _hover={{ transform: "translateY(-3px)" }}
             _active={{ transform: "translateY(-3px)" }}
@@ -243,8 +239,8 @@ const HeaderSection = () => {
           <Button
             variant="outline"
             onClick={() => handleChangeLanguage("en")}
-            bgColor={lng === "en" ? bgColorMode : undefined}
-            color={lng === "en" ? textColorMode : undefined}
+            bgColor={currentLng === "en" ? bgColorMode : undefined}
+            color={currentLng === "en" ? textColorMode : undefined}
             size="xs"
             _hover={{ transform: "translateY(-3px)" }}
             _active={{ transform: "translateY(-3px)" }}

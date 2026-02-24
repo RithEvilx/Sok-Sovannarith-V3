@@ -127,7 +127,7 @@ const ResumeLayout = ({ personalData, printRef, profile }: any) => {
                     </Text>
                     <Tooltip content={`${language.value}%`} positioning={{ placement: "left" }} openDelay={0} closeDelay={100}>
                       <Text color="white" fontSize="sm">
-                        {determinedProficiency(language.value)}
+                        {t(determinedProficiency(language.value))}
                       </Text>
                     </Tooltip>
                   </HStack>
@@ -213,7 +213,7 @@ const ResumeLayout = ({ personalData, printRef, profile }: any) => {
         {personalData.work_experience.length > 0 && (
           <VStack width="100%" alignItems="start" marginTop={1} gap={1}>
             <Text fontSize="sm" fontWeight={"semibold"}>
-              {t("WORK EXPERENCE")}
+              {t("WORK EXPERIENCE")}
             </Text>
             <Separator width="100%" variant="solid" />
             <Timeline.Root size="md">
@@ -335,7 +335,7 @@ const ResumeLayout = ({ personalData, printRef, profile }: any) => {
             <SimpleGrid width="100%" columns={!printRef ? { base: 1, md: 2 } : 2} gapX={4} gapY={0.5}>
               {personalData.soft_skils.map((skill: nameValue, idx: number) => (
                 <Progress.Root key={idx} min={0} max={100} value={skill.value} colorPalette="green" variant="outline" size="sm" shape="rounded">
-                  <Progress.Label>{skill.name}</Progress.Label>
+                  <Progress.Label>{t(skill.name)}</Progress.Label>
                   <HStack>
                     <Progress.Track flex="1">
                       <Progress.Range />

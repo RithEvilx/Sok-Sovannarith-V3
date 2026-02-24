@@ -10,7 +10,7 @@ export const personal_curriculumn_vitae: personalData = {
     "Frontend Developer | Computer Science Graduate (RUPP). Passionate about transforming complex ideas into functional, aesthetic digital experiences. Proven ability to implement modern JS frameworks and responsive design to deliver high-impact, user-centric web solutions.",
   public_link: [
     { name: "GitHub", url: "https://github.com/RithEvilx" },
-    { name: "Linkin", url: "https://linkedin.com/in/sok-sovannarith" },
+    { name: "Linkedin", url: "https://linkedin.com/in/sok-sovannarith" },
     { name: "Telegram", url: "https://t.me/rithevil" },
   ],
   work_experience: [
@@ -41,7 +41,7 @@ export const personal_curriculumn_vitae: personalData = {
   ],
   education: [
     { school: "ROYAL UNIVERSITY OF PHNOM PENH", degree: "Bachelor Degree in Computer Science", duration: "2020 - 2024" },
-    { school: "BELTEI INTERNATIONAL SCHOOL", degree: "High school deploma", duration: "2017 - 2020" },
+    { school: "BELTEI INTERNATIONAL SCHOOL", degree: "High School Diploma", duration: "2017 - 2020" },
   ],
   training: [
     // { school: "", degree: "", duration: "" }
