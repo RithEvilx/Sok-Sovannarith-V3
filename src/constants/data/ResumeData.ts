@@ -40,7 +40,6 @@ export const personal_curriculumn_vitae: personalData = {
     },
   ],
   education: [
-<<<<<<< HEAD
     {
       school: "ROYAL UNIVERSITY OF PHNOM PENH",
       degree: "Bachelor's Degree in Computer Science",
@@ -51,10 +50,8 @@ export const personal_curriculumn_vitae: personalData = {
       degree: "High School Diploma (Grade 12)",
       duration: "2019 - 2020",
     },
-=======
     { school: "ROYAL UNIVERSITY OF PHNOM PENH", degree: "Bachelor Degree in Computer Science", duration: "2020 - 2024" },
     { school: "BELTEI INTERNATIONAL SCHOOL", degree: "High School Diploma", duration: "2017 - 2020" },
->>>>>>> 5515c430bb8d7dc08ca52fb5497a6596789b5552
   ],
   training: [
     // { school: "", degree: "", duration: "" }
