@@ -164,7 +164,7 @@ const ResumeLayout = ({ personalData, printRef, profile }: any) => {
           flexDirection={!printRef ? { base: "column", md: "row" } : "row"}
           width="100%"
           alignContent="space-between"
-          marginTop={!printRef ? { base: 0, md: 7 } : 7}
+          marginTop={!printRef ? { base: 0, md: 2 } : 2}
         >
           <VStack flex="1.5" width="100%" alignItems="start" gap="0">
             <Text fontFamily="Oswald" fontSize="2xl">

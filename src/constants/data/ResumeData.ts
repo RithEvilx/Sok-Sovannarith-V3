@@ -47,11 +47,9 @@ export const personal_curriculumn_vitae: personalData = {
     },
     {
       school: "BELTEI INTERNATIONAL SCHOOL",
-      degree: "High School Diploma (Grade 12)",
+      degree: "High School Diploma",
       duration: "2019 - 2020",
     },
-    { school: "ROYAL UNIVERSITY OF PHNOM PENH", degree: "Bachelor Degree in Computer Science", duration: "2020 - 2024" },
-    { school: "BELTEI INTERNATIONAL SCHOOL", degree: "High School Diploma", duration: "2017 - 2020" },
   ],
   training: [
     // { school: "", degree: "", duration: "" }
